@@ -156,8 +156,6 @@ AnsiComment = "/*"( {AllowedCommentCharNoStar} | "*"{AllowedCommentCharNoSlash})
          }
 }
 
-"PPP"				{ return symbol(TokenNames.TIMES);}
-
 {ID}				{ return symbol(TokenNames.ID,     new String( yytext()));}   
 {WhiteSpace}		{ /* nothing */ }
 
