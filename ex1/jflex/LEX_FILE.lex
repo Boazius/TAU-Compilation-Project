@@ -67,10 +67,10 @@ import java_cup.runtime.*;
 	public int getTokenStartPosition() { return yycolumn + 1; } 
 	
 	/* check number is between 0 and 2^15 -1 TODO change sig*/
-	public boolean isValidNum(int num) { return (num >= 0 && num <= 32767) }
+	public boolean isValidNum(int num) { return (num >= 0 && num <= 32767); }
 	
 	/* TODO - before calling isValidNum, parse very large numbers in INTEGER macro?*/
-	/* TODO fix old school comment regex - add a table 2 regex macro and with it comment regex. */
+	/* TODO fix ansi comment regex - add a table 2 regex macro and with it comment regex. */
 	/* do not ignore comments inside comments*/
 %}
 
@@ -159,7 +159,7 @@ AnsiComment = "/*"( {AllowedCommentCharNoStar} | "*"{AllowedCommentCharNoSlash})
 {ID}				{ return symbol(TokenNames.ID,     new String( yytext()));}   
 {WhiteSpace}		{ /* nothing */ }
 
-{STRING}			{return symbol(TokenNames.STRING,		new String( YYtext()));}
+{STRING}			{return symbol(TokenNames.STRING,   new String( yytext()));}
 
 <<EOF>>				{ return symbol(TokenNames.EOF);}
 
