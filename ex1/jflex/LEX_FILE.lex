@@ -65,15 +65,37 @@ import java_cup.runtime.*;
 	/* Enable token position extraction from main */
 	/**********************************************/
 	public int getTokenStartPosition() { return yycolumn + 1; } 
+	
+	/* check number is between 0 and 2^15 -1 TODO change sig*/
+	public boolean isValidNum(int num) { return (num >= 0 && num <= 32767) }
+	
+	/* TODO - before calling isValidNum, parse very large numbers in INTEGER macro?*/
+	/* TODO fix old school comment regex - add a table 2 regex macro and with it comment regex. */
+	/* do not ignore comments inside comments*/
 %}
 
 /***********************/
 /* MACRO DECALARATIONS */
 /***********************/
 LineTerminator	= \r|\n|\r\n
-WhiteSpace		= {LineTerminator} | [ \t]
+WhiteSpace		= {LineTerminator} | [ \t] | [ \t\f]
 INTEGER			= 0 | [1-9][0-9]*
-ID				= [a-z]+
+LETTER = [a-z] | [A-Z]
+ALPHANUM = {LETTER} | [0-9]
+ID = {LETTER}+{ALPHANUM}*
+STRING = [\"]{LETTER}*[\"]
+InputCarriage = [^\r\n]
+
+Brace = "(" | ")" | "[" | "]" | "{" | "}"
+Punctuation = "?" | "!" | "." | ";"
+Addition = "+" | "-"
+AllowedCommentCharNoStar = {WhiteSpace} | {ALPHANUM} | {Brace} | {Punctuation} | {Addition} | "/"
+AllowedCommentCharNoSlash = {WhiteSpace} | {ALPHANUM} | {Brace} | {Punctuation} | {Addition} | "*"
+AllowedCommentCharNoLineBrakes = {ALPHANUM} | {Brace} | {Punctuation} | {Addition} | "/" | "*"
+AllowedCommentChars = {AllowedCommentChar}*
+DoubleSlashComment = "//" {AllowedCommentCharNoLineBrakes}* {LineTerminator}?
+AnsiComment = "/*"( {AllowedCommentCharNoStar} | "*"{AllowedCommentCharNoSlash})*"*/"
+
 
 /******************************/
 /* DOLAR DOLAR - DON'T TOUCH! */
@@ -93,14 +115,56 @@ ID				= [a-z]+
 
 <YYINITIAL> {
 
-"+"					{ return symbol(TokenNames.PLUS);}
-"-"					{ return symbol(TokenNames.MINUS);}
+":=" 					{ return symbol(TokenNames.ASSIGN);}
+"=" 					{ return symbol(TokenNames.EQ);}
+"["  					{ return symbol(TokenNames.LBRACK);}
+"<" 					{ return symbol(TokenNames.LT);}
+"]"  					{ return symbol(TokenNames.RBRACK );}
+">" 					{ return symbol(TokenNames.GT);}
+"{" 					{ return symbol(TokenNames.LBRACE);}
+"}" 					{ return symbol(TokenNames.RBRACE);}
+"+"  					{ return symbol(TokenNames.PLUS);}
+"-"  					{ return symbol(TokenNames.MINUS);}
+"*"  					{ return symbol(TokenNames.TIMES);}
+"/" 					{ return symbol(TokenNames.DIVIDE);}
+"," 					{ return symbol(TokenNames.COMMA);}
+"."  					{ return symbol(TokenNames.DOT);}
+";" 					{ return symbol(TokenNames.SEMICOLON);}
+"("                     { return symbol(TokenNames.LPAREN);}
+")"                     { return symbol(TokenNames.RPAREN);}
+"array"					{ return symbol(TokenNames.ARRAY);}
+"class"					{ return symbol(TokenNames.CLASS);}
+"extends"				{ return symbol(TokenNames.EXTENDS);}
+"nil"					{ return symbol(TokenNames.NIL);}
+"while"					{ return symbol(TokenNames.WHILE);}
+"return"				{ return symbol(TokenNames.RETURN);}
+"if"					{ return symbol(TokenNames.IF);}
+"new"					{ return symbol(TokenNames.NEW);}
+{DoubleSlashComment}    { return symbol(TokenNames.COMMENT);}
+{AnsiComment}      		{ return symbol(TokenNames.COMMENT);}
+
+"int"					{ return symbol(TokenNames.TYPE_INT);}
+"string"				{ return symbol(TokenNames.TYPE_STRING);}
+"void"					{ return symbol(TokenNames.TYPE_VOID);}
+
+{INTEGER}				{
+         int num = new Integer(yytext());
+         if(isValidNum(num)){
+            return symbol(TokenNames.NUMBER, num);
+         } else {
+            return symbol(TokenNames.error);
+         }
+}
+
 "PPP"				{ return symbol(TokenNames.TIMES);}
-"/"					{ return symbol(TokenNames.DIVIDE);}
-"("					{ return symbol(TokenNames.LPAREN);}
-")"					{ return symbol(TokenNames.RPAREN);}
-{INTEGER}			{ return symbol(TokenNames.NUMBER, new Integer(yytext()));}
+
 {ID}				{ return symbol(TokenNames.ID,     new String( yytext()));}   
-{WhiteSpace}		{ /* just skip what was found, do nothing */ }
+{WhiteSpace}		{ /* nothing */ }
+
+{STRING}			{return symbol(TokenNames.STRING,		new String( YYtext()));}
+
 <<EOF>>				{ return symbol(TokenNames.EOF);}
+
+"/*"                { return symbol(TokenNames.error);}
+.                   { return symbol(TokenNames.error);}
 }
