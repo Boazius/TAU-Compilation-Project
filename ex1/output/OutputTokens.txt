@@ -1,6 +1,1 @@
-ID(abcd)[1,1]
-ID(moish)[2,1]
-NUMBER(77)[2,7]
-NUMBER(999)[2,10]
-ID(zebra)[2,14]
-NUMBER(90)[3,1]
+ERROR

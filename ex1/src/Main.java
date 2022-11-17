@@ -36,9 +36,9 @@ public class Main
 				/*if the symbol is error, just output error*/
 				if(currSymbol.sym == TokenNames.error)
 				{
-					/*TODO better way to clear file?*/
 					file_writer.close();
 					file_writer = new PrintWriter(outputFilename);
+					System.out.println("ERROR");
 					file_writer.print("ERROR");
 					break;
 				}

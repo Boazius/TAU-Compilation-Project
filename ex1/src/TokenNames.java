@@ -30,7 +30,7 @@ public interface TokenNames {
     public static final int WHILE = 25;
     public static final int IF = 26;
     public static final int NEW = 27;
-    public static final int NUMBER = 28;
+    public static final int INT = 28;
     public static final int STRING = 29;
     public static final int ID = 30;
     public static final int TYPE_STRING = 31;
@@ -97,8 +97,8 @@ public interface TokenNames {
                 return "IF";
             case NEW:
                 return "NEW";
-            case NUMBER:
-                return "NUMBER";
+            case INT:
+                return "INT";
             case STRING:
                 return "STRING";
             case ID:

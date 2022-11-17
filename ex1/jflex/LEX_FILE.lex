@@ -66,10 +66,18 @@ import java_cup.runtime.*;
 	/**********************************************/
 	public int getTokenStartPosition() { return yycolumn + 1; } 
 	
-	/* check number is between 0 and 2^15 -1 TODO change sig*/
-	public boolean isValidNum(int num) { return (num >= 0 && num <= 32767); }
-	
-	/* TODO - before calling isValidNum, parse very large numbers in INTEGER macro?*/
+	/* check string (of regex [0 | [1-9][0-9]*]) is number between 0 and 2^15 -1. */
+	/* returns -1 if invalid, else returns the number in int form */
+	public int getValidInt(String numString)
+	{
+	    if (numString.length() > 5)
+	        return -1;
+	    int num = new Integer(numString);
+	    if (num >= 0 && num <= 32767)
+	        return num;
+	    return -1;
+	}
+
 	/* TODO fix ansi comment regex - add a table 2 regex macro and with it comment regex. */
 	/* do not ignore comments inside comments*/
 %}
@@ -142,24 +150,24 @@ AnsiComment = "/*"( {AllowedCommentCharNoStar} | "*"{AllowedCommentCharNoSlash})
 "new"					{ return symbol(TokenNames.NEW);}
 {DoubleSlashComment}    { return symbol(TokenNames.COMMENT);}
 {AnsiComment}      		{ return symbol(TokenNames.COMMENT);}
-
 "int"					{ return symbol(TokenNames.TYPE_INT);}
 "string"				{ return symbol(TokenNames.TYPE_STRING);}
 "void"					{ return symbol(TokenNames.TYPE_VOID);}
 
 {INTEGER}				{
-         int num = new Integer(yytext());
-         if(isValidNum(num)){
-            return symbol(TokenNames.NUMBER, num);
-         } else {
+         int num = getValidInt(yytext());
+         if(num==-1)
+         {
             return symbol(TokenNames.error);
+         } else {
+            return symbol(TokenNames.INT, num);
          }
 }
 
-{ID}				{ return symbol(TokenNames.ID,     new String( yytext()));}   
+{ID}				{ return symbol(TokenNames.ID, new String( yytext()));}
 {WhiteSpace}		{ /* nothing */ }
 
-{STRING}			{return symbol(TokenNames.STRING,   new String( yytext()));}
+{STRING}			{return symbol(TokenNames.STRING, new String( yytext()));}
 
 <<EOF>>				{ return symbol(TokenNames.EOF);}
 
