@@ -89,3 +89,24 @@ all:
 	@echo "*****************************"
 	java -jar LEXER ${INPUT} ${OUTPUT}
 
+clean:
+	@echo "****************************"
+	@echo "*                          *"
+	@echo "*                          *"
+	@echo "* [0] Remove LEXER program *"
+	@echo "*                          *"
+	@echo "*                          *"
+	@echo "****************************"
+	rm -rf LEXER
+	@echo "\n"
+	@echo "***********************************************************"
+	@echo "*                                                         *"
+	@echo "*                                                         *"
+	@echo "* [1] Remove *.class files and JFlex generated Lexer.java *"
+	@echo "*                                                         *"
+	@echo "*                                                         *"
+	@echo "***********************************************************"
+	rm -rf ${JFlex_GENERATED_FILE} ${CLASS_FILES}
+	@echo "\n"
+
+
