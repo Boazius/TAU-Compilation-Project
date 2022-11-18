@@ -315,8 +315,7 @@ class Lexer implements java_cup.runtime.Scanner {
 	    return -1;
 	}
 
-	/* TODO fix ansi comment regex - add a table 2 regex macro and with it comment regex. */
-	/* do not ignore comments inside comments*/
+	/* TODO if double slash comment is at the end of the file and there is no line terminator error. */
 
 
   /**

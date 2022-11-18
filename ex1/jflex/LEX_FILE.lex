@@ -78,14 +78,13 @@ import java_cup.runtime.*;
 	    return -1;
 	}
 
-	/* TODO fix ansi comment regex - add a table 2 regex macro and with it comment regex. */
-	/* do not ignore comments inside comments*/
+	/* TODO if double slash comment is at the end of the file and there is no line terminator error. */
 %}
 
 /***********************/
 /* MACRO DECALARATIONS */
 /***********************/
-LineTerminator	= \r|\n|\r\n
+LineTerminator	= \r | \n | \r\n
 WhiteSpace		= {LineTerminator} | [ \t] | [ \t\f]
 INTEGER			= 0 | [1-9][0-9]*
 LETTER = [a-z] | [A-Z]
@@ -100,6 +99,7 @@ Addition = "+" | "-"
 AllowedCommentCharNoStar = {WhiteSpace} | {ALPHANUM} | {Brace} | {Punctuation} | {Addition} | "/"
 AllowedCommentCharNoSlash = {WhiteSpace} | {ALPHANUM} | {Brace} | {Punctuation} | {Addition} | "*"
 AllowedCommentCharNoLineBrakes = {ALPHANUM} | {Brace} | {Punctuation} | {Addition} | "/" | "*" | [\t] | [ \t\f]
+
 DoubleSlashComment = "//"{AllowedCommentCharNoLineBrakes}* {LineTerminator}?
 AnsiComment = "/*"( {AllowedCommentCharNoStar} | "*"{AllowedCommentCharNoSlash})*"*/"
 

@@ -4,6 +4,8 @@ import java.io.PrintWriter;
 
 import java_cup.runtime.Symbol;
 
+
+/* assumes all inputs end with newline, or else I don't know how to fix the error */
 public class Main {
     static public void main(String[] argv) {
         /*define new lexer*/
