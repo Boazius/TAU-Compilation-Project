@@ -29,6 +29,11 @@ public class Main {
 
             /* [5] Main reading tokens loop */
             while (currSymbol.sym != TokenNames.EOF) {
+                /*skip comments */
+                if (currSymbol.sym == TokenNames.COMMENT) {
+                    currSymbol = currLexer.next_token();
+                    continue;
+                }
                 /*if the symbol is error, just output error*/
                 if (currSymbol.sym == TokenNames.error) {
                     file_writer.close();

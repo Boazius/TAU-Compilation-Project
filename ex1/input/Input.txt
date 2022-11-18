@@ -1,8 +1,3 @@
-abcd
-moish 77 999 zebra
-90
-// this is a comment
-/* this is an ansi comment */
-int a = 123456353753985730298573092587230598327509823573028
-
-
+abcd moish 9999 
+/* THIS IS A COMMENT */
+//this is a comment and the following equal sign is not suppoed to be here = 

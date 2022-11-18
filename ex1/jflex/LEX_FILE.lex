@@ -99,9 +99,8 @@ Punctuation = "?" | "!" | "." | ";"
 Addition = "+" | "-"
 AllowedCommentCharNoStar = {WhiteSpace} | {ALPHANUM} | {Brace} | {Punctuation} | {Addition} | "/"
 AllowedCommentCharNoSlash = {WhiteSpace} | {ALPHANUM} | {Brace} | {Punctuation} | {Addition} | "*"
-AllowedCommentCharNoLineBrakes = {ALPHANUM} | {Brace} | {Punctuation} | {Addition} | "/" | "*"
-AllowedCommentChars = {AllowedCommentChar}*
-DoubleSlashComment = "//" {AllowedCommentCharNoLineBrakes}* {LineTerminator}?
+AllowedCommentCharNoLineBrakes = {ALPHANUM} | {Brace} | {Punctuation} | {Addition} | "/" | "*" | [\t] | [ \t\f]
+DoubleSlashComment = "//"{AllowedCommentCharNoLineBrakes}* {LineTerminator}?
 AnsiComment = "/*"( {AllowedCommentCharNoStar} | "*"{AllowedCommentCharNoSlash})*"*/"
 
 
