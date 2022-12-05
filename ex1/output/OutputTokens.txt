@@ -1,4 +1,1 @@
-ID(abcd)[1,1]
-ID(moish)[1,6]
-INT(9999)[1,12]
-EQ[3,76]
+ERROR
