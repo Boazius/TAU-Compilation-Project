@@ -111,8 +111,8 @@ AllowedCommentCharNoSlash = {WhiteSpace} | {ALPHANUM} | {Brace} | {Punctuation} 
 AllowedCommentChars = {WhiteSpace} | {ALPHANUM} | {Brace} | {Punctuation} | {Addition} | "*" | "/"
 AllowedCommentCharNoLineBrakes = {ALPHANUM} | {Brace} | {Punctuation} | {Addition} | "/" | "*" | [\t] | [ \t\f]
 
-AnsiComment = "/*"( {AllowedCommentCharNoStar} | "*"{AllowedCommentCharNoSlash})*"*/"
 DoubleSlashComment = "//"{AllowedCommentCharNoLineBrakes}* {LineTerminator}
+AnsiComment = "/*" ( {AllowedCommentCharNoStar} | "*"{AllowedCommentCharNoSlash} )*  (("*")*)"*/"
 
 
 /******************************/
