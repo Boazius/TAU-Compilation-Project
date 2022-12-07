@@ -88,11 +88,10 @@ import java_cup.runtime.*;
 	    return -1;
 	}
 
-	/* TODO if double slash comment is at the end of the file and there is no line terminator error. */
 %}
 
 /***********************/
-/* MACRO DECALARATIONS */
+/* MACRO DECLARATIONS */
 /***********************/
 LineTerminator	= \r | \n | \r\n
 WhiteSpace		= {LineTerminator} | [ \t] | [ \t\f]
