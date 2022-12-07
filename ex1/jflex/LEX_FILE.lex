@@ -108,10 +108,11 @@ Punctuation = "?" | "!" | "." | ";"
 Addition = "+" | "-"
 AllowedCommentCharNoStar = {WhiteSpace} | {ALPHANUM} | {Brace} | {Punctuation} | {Addition} | "/"
 AllowedCommentCharNoSlash = {WhiteSpace} | {ALPHANUM} | {Brace} | {Punctuation} | {Addition} | "*"
+AllowedCommentChars = {WhiteSpace} | {ALPHANUM} | {Brace} | {Punctuation} | {Addition} | "*" | "/"
 AllowedCommentCharNoLineBrakes = {ALPHANUM} | {Brace} | {Punctuation} | {Addition} | "/" | "*" | [\t] | [ \t\f]
 
-DoubleSlashComment = "//"{AllowedCommentCharNoLineBrakes}* {LineTerminator}?
 AnsiComment = "/*"( {AllowedCommentCharNoStar} | "*"{AllowedCommentCharNoSlash})*"*/"
+DoubleSlashComment = "//"{AllowedCommentCharNoLineBrakes}* {LineTerminator}
 
 
 /******************************/
@@ -181,5 +182,6 @@ AnsiComment = "/*"( {AllowedCommentCharNoStar} | "*"{AllowedCommentCharNoSlash})
 <<EOF>>				{ return symbol(TokenNames.EOF);}
 
 "/*"                { return symbol(TokenNames.error);}
+"//"                { return symbol(TokenNames.error);}
 .                   { return symbol(TokenNames.error);}
 }
