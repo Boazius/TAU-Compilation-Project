@@ -161,6 +161,7 @@ clean:
 	@echo "*     TokenNames.java                                      *"
 	@echo "*                                                          *"
 	@echo "************************************************************"
+	rm -rf ${JFlex_CUP_GENERATED_FILES} ${BIN_DIR}/*.class ${BIN_DIR}/AST/*.class
 
 win:
 	clear
