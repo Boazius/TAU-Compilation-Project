@@ -64,14 +64,24 @@ import java_cup.runtime.*;
 	/**********************************************/
 	/* Enable token position extraction from main */
 	/**********************************************/
+
 	public int getTokenStartPosition() { return yycolumn + 1; } 
 	
-	/* check string (of regex [0 | [1-9][0-9]*]) is number between 0 and 2^15 -1. */
+	/* check string is a number between 0 and 2^15 -1. */
 	/* returns -1 if invalid, else returns the number in int form */
 	public int getValidInt(String numString)
 	{
+	    /*check valid length of number */
 	    if (numString.length() > 5)
 	        return -1;
+	    /*check if leading zeroes */
+	    if(numString.charAt(0)=='0')
+	    {
+	        if(numString.length()>1)
+	            return -1;
+	        return 0;
+	    }
+	    /*parse number */
 	    int num = new Integer(numString);
 	    if (num >= 0 && num <= 32767)
 	        return num;
@@ -86,7 +96,7 @@ import java_cup.runtime.*;
 /***********************/
 LineTerminator	= \r | \n | \r\n
 WhiteSpace		= {LineTerminator} | [ \t] | [ \t\f]
-INTEGER			= 0 | [1-9][0-9]*
+INTEGER			= [0-9]*
 LETTER = [a-z] | [A-Z]
 ALPHANUM = {LETTER} | [0-9]
 ID = {LETTER}+{ALPHANUM}*
