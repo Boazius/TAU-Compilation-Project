@@ -58,10 +58,10 @@ class Lexer implements java_cup.runtime.Scanner {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\1\1\1\2\2\3\1\1\1\4\1\2\1\5\1\6"+
+    "\1\0\1\1\2\2\1\3\1\4\1\1\1\5\1\6"+
     "\1\7\1\10\1\11\1\12\1\13\1\14\1\15\1\16"+
-    "\1\17\1\20\1\2\1\21\1\22\1\23\1\24\11\4"+
-    "\1\0\1\25\2\2\1\26\10\4\1\27\2\4\2\30"+
+    "\1\17\1\20\1\1\1\21\1\22\1\23\1\24\11\4"+
+    "\1\0\1\25\2\1\1\26\10\4\1\27\2\4\2\30"+
     "\3\0\5\4\1\31\1\32\1\33\2\4\1\0\6\4"+
     "\1\34\1\30\1\35\1\4\1\36\2\4\1\37\1\40"+
     "\1\41\1\4\1\42";
@@ -207,7 +207,7 @@ class Lexer implements java_cup.runtime.Scanner {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\1\1\1\11\1\1\1\11\3\1\12\11\1\1\1\11"+
+    "\1\0\1\11\1\1\1\11\3\1\12\11\1\1\1\11"+
     "\1\1\4\11\11\1\1\0\1\11\2\1\1\11\14\1"+
     "\1\11\3\0\12\1\1\0\22\1";
 
@@ -720,6 +720,16 @@ class Lexer implements java_cup.runtime.Scanner {
       else {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1: 
+            { return symbol(TokenNames.error);
+            } 
+            // fall through
+          case 35: break;
+          case 2: 
+            { /* nothing */
+            } 
+            // fall through
+          case 36: break;
+          case 3: 
             { int num = getValidInt(yytext());
          if(num==-1)
          {
@@ -727,16 +737,6 @@ class Lexer implements java_cup.runtime.Scanner {
          } else {
             return symbol(TokenNames.INT, num);
          }
-            } 
-            // fall through
-          case 35: break;
-          case 2: 
-            { return symbol(TokenNames.error);
-            } 
-            // fall through
-          case 36: break;
-          case 3: 
-            { /* nothing */
             } 
             // fall through
           case 37: break;
