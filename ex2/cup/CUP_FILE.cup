@@ -92,10 +92,10 @@ terminal COMMA;
 terminal NEW;
 terminal COMMENT;
 
-terminal STRING TYPE_INT;
-terminal STRING TYPE_STRING;
-terminal STRING TYPE_VOID;
-terminal STRING ID;
+terminal String TYPE_INT;
+terminal String TYPE_STRING;
+terminal String TYPE_VOID;
+terminal String ID;
 
 terminal Integer INT;
 terminal String STRING;
