@@ -3,14 +3,14 @@ package AST;
 public class AST_DEC_VAR extends AST_DEC {
 
     AST_TYPE typeNode;
-    String name;
+    String id;
     AST_EXP exp;
 
     /*********************************************************/
     /* The default message for an unknown AST DECLERATION node */
 
     /*********************************************************/
-    public AST_DEC_VAR(AST_TYPE typeNode, String name, AST_EXP exp) {
+    public AST_DEC_VAR(AST_TYPE typeNode, String id, AST_EXP exp) {
         /******************************/
         /* SET A UNIQUE SERIAL NUMBER */
         /******************************/
@@ -20,16 +20,16 @@ public class AST_DEC_VAR extends AST_DEC {
         /* PRINT CORRESPONDING DERIVATION RULE */
         /***************************************/
         if (exp != null)
-            System.out.format(" decVar -> TYPE NAME(%s) ASSIGN EXP SEMICOLON\n", name);
+            System.out.format(" varDec -> TYPE ID(%s)::= EXP;\n", id);
         else
-            System.out.format(" decVar -> TYPE NAME(%s)SEMICOLON\n", name);
+            System.out.format(" varDec -> TYPE ID(%s);\n", id);
 
 
         /*******************************/
         /* COPY INPUT DATA MEMBERS ... */
         /*******************************/
         this.typeNode = typeNode;
-        this.name = name;
+        this.id = id;
         this.exp = exp;
     }
 
@@ -41,13 +41,19 @@ public class AST_DEC_VAR extends AST_DEC {
         /*******************************/
         /* AST NODE TYPE = AST ID EXP */
         /*******************************/
-        System.out.format("AST NODE decVar ( %s ) (%s)\n", name);
+        /*TODO test this*/
+        if (typeNode!= null) typeNode.PrintMe();
+        System.out.format("AST_DEC_VAR ID(%s)\n", id);
         if (exp != null) exp.PrintMe();
 
         /*********************************/
         /* Print to AST GRAPHIZ DOT file */
         /*********************************/
-        AST_GRAPHVIZ.getInstance().logNode(SerialNumber, String.format("Variable Deceleration: TYPE(%s) NAME(%s)", typeNode.type, name));
+        /*variable declare node*/
+        AST_GRAPHVIZ.getInstance().logNode(SerialNumber, String.format("Var Declaration: NAME(%s)", id));
+        /*edge to type*/
+        if (typeNode != null)
+            AST_GRAPHVIZ.getInstance().logEdge(SerialNumber, typeNode.SerialNumber);
         if (exp != null)
             AST_GRAPHVIZ.getInstance().logEdge(SerialNumber, exp.SerialNumber);
     }
