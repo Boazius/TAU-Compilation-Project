@@ -31,6 +31,7 @@ public class AST_DEC_LIST extends AST_Node {
     }
 
     public void PrintMe() {
+        /*print the entire list of decs to out and to DOT.*/
         System.out.print("AST_DEC_LIST\n");
 
         if (head != null) head.PrintMe();

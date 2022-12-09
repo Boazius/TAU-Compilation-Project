@@ -2,10 +2,6 @@ package AST;
 
 public class AST_DEC_SINGLE extends AST_DEC {
     public AST_DEC dec;
-
-    /******************/
-    /* CONSTRUCTOR(S) */
-    /******************/
     public AST_DEC_SINGLE(AST_DEC dec) {
         /******************************/
         /* SET A UNIQUE SERIAL NUMBER */
@@ -24,19 +20,13 @@ public class AST_DEC_SINGLE extends AST_DEC {
     }
 
     public void PrintMe() {
-        /*************************************/
-        /* AST NODE TYPE = AST SUBSCRIPT VAR */
-        /*************************************/
-        System.out.print("AST NODE SINGLE dec\n");
-
-        /**************************************/
-        /* RECURSIVELY PRINT left + right ... */
-        /**************************************/
+        System.out.print("AST_DEC_SINGLE\n");
+        /*print the dec*/
         if (dec != null) dec.PrintMe();
 
 
         /****************************************/
-        /* PRINT Edges to AST GRAPHVIZ DOT file */
+        /* PRINT node and add edge to the dec to AST GRAPHVIZ DOT file */
         /****************************************/
         AST_GRAPHVIZ.getInstance().logNode(SerialNumber, "Single Declaration");
         if (dec != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber, dec.SerialNumber);
