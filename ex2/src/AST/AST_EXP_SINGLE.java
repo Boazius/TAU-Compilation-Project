@@ -1,14 +1,13 @@
 package AST;
 
-public class AST_VAR_SUBSCRIPT extends AST_VAR {
-    public AST_VAR var;
-    public AST_EXP subscript;
+public class AST_EXP_SINGLE extends AST_EXP {
+    public AST_EXP exp;
 
     /******************/
     /* CONSTRUCTOR(S) */
 
     /******************/
-    public AST_VAR_SUBSCRIPT(AST_VAR var, AST_EXP subscript) {
+    public AST_EXP_SINGLE(AST_EXP son) {
         /******************************/
         /* SET A UNIQUE SERIAL NUMBER */
         /******************************/
@@ -17,42 +16,39 @@ public class AST_VAR_SUBSCRIPT extends AST_VAR {
         /***************************************/
         /* PRINT CORRESPONDING DERIVATION RULE */
         /***************************************/
-        System.out.print("var -> var [ exp ]\n");
+        System.out.print("exp -> (exp)\n");
 
         /*******************************/
         /* COPY INPUT DATA NENBERS ... */
         /*******************************/
-        this.var = var;
-        this.subscript = subscript;
+        this.exp = son;
     }
 
-    /*****************************************************/
-    /* The printing message for a subscript var AST node */
+    /*************************************************/
+    /* The printing message for a binop exp AST node */
 
-    /*****************************************************/
+    /*************************************************/
     public void PrintMe() {
         /*************************************/
         /* AST NODE TYPE = AST SUBSCRIPT VAR */
         /*************************************/
-        System.out.print("AST NODE SUBSCRIPT VAR\n");
+        System.out.print("AST NODE SINGLE EXP\n");
 
-        /****************************************/
-        /* RECURSIVELY PRINT VAR + SUBSRIPT ... */
-        /****************************************/
-        if (var != null) var.PrintMe();
-        if (subscript != null) subscript.PrintMe();
+        /**************************************/
+        /* RECURSIVELY PRINT left + right ... */
+        /**************************************/
+        if (exp != null) exp.PrintMe();
 
         /***************************************/
         /* PRINT Node to AST GRAPHVIZ DOT file */
         /***************************************/
         AST_GRAPHVIZ.getInstance().logNode(
                 SerialNumber,
-                "SUBSCRIPT VAR...[...]");
+                String.format("Single Expression"));
 
         /****************************************/
         /* PRINT Edges to AST GRAPHVIZ DOT file */
         /****************************************/
-        if (var != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber, var.SerialNumber);
-        if (subscript != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber, subscript.SerialNumber);
+        if (exp != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber, exp.SerialNumber);
     }
 }

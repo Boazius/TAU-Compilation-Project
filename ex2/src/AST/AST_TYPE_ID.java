@@ -1,13 +1,16 @@
 package AST;
 
-public class AST_EXP_INT extends AST_EXP {
-    public int value;
+public class AST_TYPE_ID extends AST_TYPE {
+    /************************/
+    /* simple variable name */
+    /************************/
+    public String name;
 
     /******************/
     /* CONSTRUCTOR(S) */
 
     /******************/
-    public AST_EXP_INT(int value) {
+    public AST_TYPE_ID(String name) {
         /******************************/
         /* SET A UNIQUE SERIAL NUMBER */
         /******************************/
@@ -16,29 +19,29 @@ public class AST_EXP_INT extends AST_EXP {
         /***************************************/
         /* PRINT CORRESPONDING DERIVATION RULE */
         /***************************************/
-        System.out.format("exp -> INT( %d )\n", value);
+        System.out.format("type -> ID( %s )\n", name);
 
         /*******************************/
-        /* COPY INPUT DATA MEMBERS ... */
+        /* COPY INPUT DATA NENBERS ... */
         /*******************************/
-        this.value = value;
+        this.name = name;
     }
 
-    /************************************************/
-    /* The printing message for an INT EXP AST node */
+    /**************************************************/
+    /* The printing message for a simple var AST node */
 
-    /************************************************/
+    /**************************************************/
     public void PrintMe() {
-        /*******************************/
-        /* AST NODE TYPE = AST INT EXP */
-        /*******************************/
-        System.out.format("AST NODE INT( %d )\n", value);
+        /**********************************/
+        /* AST NODE TYPE = AST TYPE ID */
+        /**********************************/
+        System.out.format("AST NODE TYPE ID( %s )\n", name);
 
         /*********************************/
         /* Print to AST GRAPHIZ DOT file */
         /*********************************/
         AST_GRAPHVIZ.getInstance().logNode(
                 SerialNumber,
-                String.format("INT(%d)", value));
+                String.format("TYPE ID(%s)", name));
     }
 }

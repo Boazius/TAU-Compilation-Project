@@ -1,13 +1,14 @@
 package AST;
 
-public class AST_EXP_INT extends AST_EXP {
-    public int value;
+public class AST_NEW_EXP extends AST_EXP {
+    public AST_TYPE t;
+    public AST_EXP exp;
 
     /******************/
     /* CONSTRUCTOR(S) */
 
     /******************/
-    public AST_EXP_INT(int value) {
+    public AST_NEW_EXP(AST_TYPE t, AST_EXP exp) {
         /******************************/
         /* SET A UNIQUE SERIAL NUMBER */
         /******************************/
@@ -16,12 +17,18 @@ public class AST_EXP_INT extends AST_EXP {
         /***************************************/
         /* PRINT CORRESPONDING DERIVATION RULE */
         /***************************************/
-        System.out.format("exp -> INT( %d )\n", value);
+        /*TODO check class maybe of type somehow */
+        if (exp != null)
+            System.out.format("exp -> NEW type(%s) exp\n", t);
+        else
+            System.out.format("exp -> NEW type(%s) \n", t);
+
 
         /*******************************/
-        /* COPY INPUT DATA MEMBERS ... */
+        /* COPY INPUT DATA NENBERS ... */
         /*******************************/
-        this.value = value;
+        this.t = t;
+        this.exp = exp;
     }
 
     /************************************************/
@@ -30,15 +37,17 @@ public class AST_EXP_INT extends AST_EXP {
     /************************************************/
     public void PrintMe() {
         /*******************************/
-        /* AST NODE TYPE = AST INT EXP */
+        /* AST NODE TYPE = AST ID EXP */
         /*******************************/
-        System.out.format("AST NODE INT( %d )\n", value);
+        System.out.format("AST NODE NEW type( %s )\n", t);
+        if (exp != null) exp.PrintMe();
 
         /*********************************/
         /* Print to AST GRAPHIZ DOT file */
         /*********************************/
-        AST_GRAPHVIZ.getInstance().logNode(
-                SerialNumber,
-                String.format("INT(%d)", value));
+
+
+        AST_GRAPHVIZ.getInstance().logNode(SerialNumber, String.format("NEW type(%s)", t));
+        if (exp != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber, exp.SerialNumber);
     }
 }

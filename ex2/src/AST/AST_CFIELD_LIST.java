@@ -1,17 +1,13 @@
 package AST;
 
-public class AST_STMT_LIST extends AST_Node {
-    /****************/
+public class AST_CFIELD_LIST extends AST_Node {
+
     /* DATA MEMBERS */
-    /****************/
-    public AST_STMT head;
-    public AST_STMT_LIST tail;
+    public AST_CFIELD head;
+    public AST_CFIELD_LIST tail;
 
-    /******************/
     /* CONSTRUCTOR(S) */
-
-    /******************/
-    public AST_STMT_LIST(AST_STMT head, AST_STMT_LIST tail) {
+    public AST_CFIELD_LIST(AST_CFIELD head, AST_CFIELD_LIST tail) {
         /******************************/
         /* SET A UNIQUE SERIAL NUMBER */
         /******************************/
@@ -20,29 +16,22 @@ public class AST_STMT_LIST extends AST_Node {
         /***************************************/
         /* PRINT CORRESPONDING DERIVATION RULE */
         /***************************************/
-        if (tail != null) System.out.print("stmts -> stmt stmts\n");
-        if (tail == null) System.out.print("stmts -> stmt      \n");
+        if (tail != null) System.out.print("cfields -> cfield cfields\n");
+        if (tail == null) System.out.print("cfields -> cfield\n");
 
         /*******************************/
-        /* COPY INPUT DATA NENBERS ... */
+        /* COPY INPUT DATA Members ... */
         /*******************************/
         this.head = head;
         this.tail = tail;
     }
 
-    /******************************************************/
-    /* The printing message for a statement list AST node */
-
-    /******************************************************/
+    /*  printing message for a cFIELD list AST node */
     public void PrintMe() {
-        /**************************************/
-        /* AST NODE TYPE = AST STATEMENT LIST */
-        /**************************************/
-        System.out.print("AST NODE STMT LIST\n");
+        /* AST NODE TYPE = AST cFIELD LIST */
+        System.out.print("AST NODE CFIELD LIST\n");
 
-        /*************************************/
-        /* RECURSIVELY PRINT HEAD + TAIL ... */
-        /*************************************/
+        /* print entire list */
         if (head != null) head.PrintMe();
         if (tail != null) tail.PrintMe();
 
@@ -51,7 +40,7 @@ public class AST_STMT_LIST extends AST_Node {
         /**********************************/
         AST_GRAPHVIZ.getInstance().logNode(
                 SerialNumber,
-                "STMT LIST");
+                "CFIELD LIST");
 
         /****************************************/
         /* PRINT Edges to AST GRAPHVIZ DOT file */

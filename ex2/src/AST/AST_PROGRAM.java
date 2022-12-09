@@ -1,16 +1,16 @@
 package AST;
 
-public class AST_VAR_SIMPLE extends AST_VAR {
+public class AST_PROGRAM extends AST_Node {
     /************************/
     /* simple variable name */
     /************************/
-    public String name;
+    public AST_DEC_LIST decList;
 
     /******************/
     /* CONSTRUCTOR(S) */
 
     /******************/
-    public AST_VAR_SIMPLE(String name) {
+    public AST_PROGRAM(AST_DEC_LIST decList) {
         /******************************/
         /* SET A UNIQUE SERIAL NUMBER */
         /******************************/
@@ -19,12 +19,12 @@ public class AST_VAR_SIMPLE extends AST_VAR {
         /***************************************/
         /* PRINT CORRESPONDING DERIVATION RULE */
         /***************************************/
-        System.out.format("var -> ID( %s )\n", name);
+        System.out.format("Program -> [decList]+");
 
         /*******************************/
-        /* COPY INPUT DATA Members ... */
+        /* COPY INPUT DATA NENBERS ... */
         /*******************************/
-        this.name = name;
+        this.decList = decList;
     }
 
     /**************************************************/
@@ -35,13 +35,17 @@ public class AST_VAR_SIMPLE extends AST_VAR {
         /**********************************/
         /* AST NODE TYPE = AST SIMPLE VAR */
         /**********************************/
-        System.out.format("AST NODE SIMPLE VAR( %s )\n", name);
+        System.out.format("AST NODE PROGRAM");
 
+
+        decList.PrintMe();
         /*********************************/
         /* Print to AST GRAPHIZ DOT file */
         /*********************************/
         AST_GRAPHVIZ.getInstance().logNode(
                 SerialNumber,
-                String.format("SIMPLE VAR(%s)", name));
+                String.format("START OF PROGRAM"));
+
+        AST_GRAPHVIZ.getInstance().logEdge(SerialNumber, decList.SerialNumber);
     }
 }

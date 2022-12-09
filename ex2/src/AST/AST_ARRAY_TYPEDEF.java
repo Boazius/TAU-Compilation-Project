@@ -1,13 +1,11 @@
 package AST;
 
-public class AST_EXP_INT extends AST_EXP {
-    public int value;
+public class AST_ARRAY_TYPEDEF extends AST_DEC {
 
-    /******************/
-    /* CONSTRUCTOR(S) */
+    String name;
+    AST_TYPE type;
 
-    /******************/
-    public AST_EXP_INT(int value) {
+    public AST_ARRAY_TYPEDEF(String name, AST_TYPE type) {
         /******************************/
         /* SET A UNIQUE SERIAL NUMBER */
         /******************************/
@@ -16,29 +14,29 @@ public class AST_EXP_INT extends AST_EXP {
         /***************************************/
         /* PRINT CORRESPONDING DERIVATION RULE */
         /***************************************/
-        System.out.format("exp -> INT( %d )\n", value);
+        /*TODO handle type*/
+        System.out.format("arrayDec ->  ARRAY ID( %s ) EQ ID(%s)\n", name, type);
 
         /*******************************/
-        /* COPY INPUT DATA MEMBERS ... */
+        /* COPY INPUT DATA MEMBERS      */
         /*******************************/
-        this.value = value;
+        this.name = name;
+        this.type = type;
     }
 
     /************************************************/
-    /* The printing message for an INT EXP AST node */
-
+    /* printing to console and dot file */
     /************************************************/
     public void PrintMe() {
         /*******************************/
-        /* AST NODE TYPE = AST INT EXP */
+        /* AST NODE TYPE = AST ID EXP */
         /*******************************/
-        System.out.format("AST NODE INT( %d )\n", value);
+        System.out.format("AST NODE ARRAY ID( %s ) EQ TYPE(%s)", name, type);
 
         /*********************************/
         /* Print to AST GRAPHIZ DOT file */
         /*********************************/
-        AST_GRAPHVIZ.getInstance().logNode(
-                SerialNumber,
-                String.format("INT(%d)", value));
+        AST_GRAPHVIZ.getInstance().logNode(SerialNumber, String.format("Array Declaration NAME(%s) TYPE(%s)", name, type));
+
     }
 }

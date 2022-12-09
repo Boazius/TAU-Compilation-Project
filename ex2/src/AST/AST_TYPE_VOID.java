@@ -1,13 +1,12 @@
 package AST;
 
-public class AST_EXP_INT extends AST_EXP {
-    public int value;
+public class AST_TYPE_VOID extends AST_TYPE {
 
     /******************/
     /* CONSTRUCTOR(S) */
 
     /******************/
-    public AST_EXP_INT(int value) {
+    public AST_TYPE_VOID(int value) {
         /******************************/
         /* SET A UNIQUE SERIAL NUMBER */
         /******************************/
@@ -16,12 +15,8 @@ public class AST_EXP_INT extends AST_EXP {
         /***************************************/
         /* PRINT CORRESPONDING DERIVATION RULE */
         /***************************************/
-        System.out.format("exp -> INT( %d )\n", value);
+        System.out.format("type -> TYPE_VOID\n");
 
-        /*******************************/
-        /* COPY INPUT DATA MEMBERS ... */
-        /*******************************/
-        this.value = value;
     }
 
     /************************************************/
@@ -32,13 +27,13 @@ public class AST_EXP_INT extends AST_EXP {
         /*******************************/
         /* AST NODE TYPE = AST INT EXP */
         /*******************************/
-        System.out.format("AST NODE INT( %d )\n", value);
+        System.out.format("AST NODE TYPE_VOID\n");
 
         /*********************************/
         /* Print to AST GRAPHIZ DOT file */
         /*********************************/
         AST_GRAPHVIZ.getInstance().logNode(
                 SerialNumber,
-                String.format("INT(%d)", value));
+                String.format("TYPE_VOID"));
     }
 }
