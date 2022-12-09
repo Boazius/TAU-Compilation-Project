@@ -11,7 +11,7 @@ public class AST_TYPE extends AST_Node {
     /* CONSTRUCTOR(S) */
 
     /******************/
-    public AST_TYPE(String name,Boolean isID) {
+    public AST_TYPE(String type,Boolean isID) {
         /******************************/
         /* SET A UNIQUE SERIAL NUMBER */
         /******************************/
@@ -33,7 +33,7 @@ public class AST_TYPE extends AST_Node {
         /*******************************/
         /* COPY INPUT DATA NENBERS ... */
         /*******************************/
-        this.type = name;
+        this.type = type;
         this.isID = isID;
     }
 
