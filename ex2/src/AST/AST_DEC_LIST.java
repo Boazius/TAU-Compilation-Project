@@ -20,29 +20,19 @@ public class AST_DEC_LIST extends AST_Node {
         /***************************************/
         /* PRINT CORRESPONDING DERIVATION RULE */
         /***************************************/
-        if (tail != null) System.out.print("decs -> dec decs\n");
-        else System.out.print("decs -> dec\n");
+        if (tail != null) System.out.print("declist -> dec declist\n");
+        else System.out.print("declist -> dec\n");
 
         /*******************************/
-        /* COPY INPUT DATA NENBERS ... */
+        /* COPY INPUT DATA Members ... */
         /*******************************/
         this.head = head;
         this.tail = tail;
     }
 
-    /******************************************************/
-    /* The printing message for a cFIELD list AST node */
-
-    /******************************************************/
     public void PrintMe() {
-        /**************************************/
-        /* AST NODE TYPE = AST cFIELD LIST */
-        /**************************************/
-        System.out.print("AST NODE DEC LIST\n");
+        System.out.print("AST_DEC_LIST\n");
 
-        /*************************************/
-        /* RECURSIVELY PRINT HEAD + TAIL ... */
-        /*************************************/
         if (head != null) head.PrintMe();
         if (tail != null) tail.PrintMe();
 

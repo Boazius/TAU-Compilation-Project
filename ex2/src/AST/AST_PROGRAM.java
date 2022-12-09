@@ -19,7 +19,7 @@ public class AST_PROGRAM extends AST_Node {
         /***************************************/
         /* PRINT CORRESPONDING DERIVATION RULE */
         /***************************************/
-        System.out.format("Program -> [decList]+");
+        System.out.format("Program -> [decList]+\n");
 
         /*******************************/
         /* COPY INPUT DATA NENBERS ... */
@@ -27,15 +27,9 @@ public class AST_PROGRAM extends AST_Node {
         this.decList = decList;
     }
 
-    /**************************************************/
-    /* The printing message for a simple var AST node */
-
-    /**************************************************/
     public void PrintMe() {
-        /**********************************/
-        /* AST NODE TYPE = AST SIMPLE VAR */
-        /**********************************/
-        System.out.format("AST NODE PROGRAM");
+
+        System.out.format("AST_PROGRAM\n");
 
 
         decList.PrintMe();

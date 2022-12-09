@@ -45,6 +45,7 @@ scan with
 	Symbol s;
 	s = lexer.next_token();
 	//System.out.print(s.sym);
+	/*print the current token: [line,column] TokenName(value) */
 	System.out.print("[");
 	System.out.print(lexer.getLine());
 	System.out.print(":");
@@ -184,8 +185,7 @@ Program     ::=  			decList:l       {:RESULT = new AST_PROGRAM(l);:}
 					;
 
 
-/* dec^+ == dec | dec dec^+ */
-/* node(dec,declist) or node(dec,NULL) */
+/* dec^+ == dec | dec dec+ */
 decList     ::=     		dec:d decList:l {:RESULT = new AST_DEC_LIST(d,l); :}
                     | 		dec:d         	{:RESULT = new AST_DEC_LIST(d,null); :}
 					;
