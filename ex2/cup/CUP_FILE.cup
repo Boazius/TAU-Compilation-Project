@@ -211,11 +211,11 @@ varDec 	::= 				type:t ID:name SEMICOLON {: RESULT = new AST_DEC_VAR(t,name,null
                     ;
 
 /* type ::= TYPE_INT | TYPE_STRING | TYPE_VOID | ID */
-/* TODO just AST_TYPE */
-type ::=                    TYPE_INT:t        {:RESULT = new AST_TYPE_INT(t);:}
-                    |       TYPE_STRING:t     {:RESULT = new AST_TYPE_STRING(t);:}
-                    |       TYPE_VOID:t       {:RESULT = new AST_TYPE_VOID(t);:}
-                    |       ID:name         {:RESULT = new AST_TYPE_ID(name);:}
+/* TODO fix this so that it gets type directly from TYPE_INT,.. etc.*/
+type ::=                    TYPE_INT:t        {:RESULT = new AST_TYPE("int",false);:}
+                    |       TYPE_STRING:t     {:RESULT = new AST_TYPE("string",false);:}
+                    |       TYPE_VOID:t       {:RESULT = new AST_TYPE("void",false);:}
+                    |       ID:name           {:RESULT = new AST_TYPE(name,true);:}
                     ;
 
 /*exp ::= var | '(' exp ')' | exp BINOP exp
