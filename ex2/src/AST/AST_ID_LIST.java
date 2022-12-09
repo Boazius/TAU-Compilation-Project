@@ -4,15 +4,15 @@ public class AST_ID_LIST extends AST_Node {
     /****************/
     /* DATA MEMBERS */
     /****************/
-    public String head1;
-    public String head2;
+    public AST_TYPE type;
+    public String head;
     public AST_ID_LIST tail;
 
     /******************/
     /* CONSTRUCTOR(S) */
 
     /******************/
-    public AST_ID_LIST(String head1, String head2, AST_ID_LIST tail) {
+    public AST_ID_LIST(AST_TYPE type, String head, AST_ID_LIST tail) {
         /******************************/
         /* SET A UNIQUE SERIAL NUMBER */
         /******************************/
@@ -21,26 +21,26 @@ public class AST_ID_LIST extends AST_Node {
         /***************************************/
         /* PRINT CORRESPONDING DERIVATION RULE */
         /***************************************/
-        if (tail != null) System.out.print("ids -> ID ID ids\n");
-        if (tail == null) System.out.print("ids -> ID ID     \n");
+        if (tail != null) System.out.print("ids -> type ID ids\n");
+        if (tail == null) System.out.print("ids -> type ID     \n");
 
         /*******************************/
         /* COPY INPUT DATA NENBERS ... */
         /*******************************/
-        this.head1 = head1;
-        this.head2 = head2;
+        this.type = type;
+        this.head = head;
         this.tail = tail;
     }
 
     /******************************************************/
     /* The printing message for a statement list AST node */
-
+    /* TODO type.type is bad, u need to printme on the node AST_TYPE*/
     /******************************************************/
     public void PrintMe() {
         /**************************************/
         /* AST NODE TYPE = AST STATEMENT LIST */
         /**************************************/
-        System.out.format("AST NODE ID LIST: ID1(&s) ID2(&s)\n", head1, head2);
+        System.out.format("AST NODE ID LIST: TYPE(&s) ID(&s)\n", type.type, head);
 
         /*************************************/
         /* RECURSIVELY PRINT HEAD + TAIL ... */
@@ -57,7 +57,7 @@ public class AST_ID_LIST extends AST_Node {
         /****************************************/
         /* PRINT Edges to AST GRAPHVIZ DOT file */
         /****************************************/
-        AST_GRAPHVIZ.getInstance().logNode(SerialNumber, String.format("ID1(%s) ID2(%s)", head1, head2));
+        AST_GRAPHVIZ.getInstance().logNode(SerialNumber, String.format("TYPE(%s) ID2(%s)", type.type, head));
         if (tail != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber, tail.SerialNumber);
     }
 
