@@ -164,9 +164,9 @@ precedence nonassoc LPAREN;
 precedence left DOT;
 
 
-/* START WITH: stmtList */
+/* START WITH: not stmtList, instead Program */
 /************************/
-start with stmtList;
+start with Program;
 
 /********************/
 /* DERIVATION RULES */
