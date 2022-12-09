@@ -92,19 +92,17 @@ terminal COMMA;
 terminal NEW;
 terminal COMMENT;
 
-terminal TYPE_INT;
-terminal TYPE_STRING;
-terminal TYPE_VOID;
-terminal ID;
+terminal STRING TYPE_INT;
+terminal STRING TYPE_STRING;
+terminal STRING TYPE_VOID;
+terminal STRING ID;
+
+terminal Integer INT;
+terminal String STRING;
 
 /*terminal EOF;*/
 /*terminal error;*/
 
-/*************/
-/* TERMINALS */
-/*************/
-terminal Integer INT;
-terminal String STRING;
 
 /*****************/
 /* NON TERMINALS */
@@ -212,9 +210,9 @@ varDec 	::= 				type:t ID:name SEMICOLON {: RESULT = new AST_DEC_VAR(t,name,null
 
 /* type ::= TYPE_INT | TYPE_STRING | TYPE_VOID | ID */
 /* TODO fix this so that it gets type directly from TYPE_INT,.. etc.*/
-type ::=                    TYPE_INT:t        {:RESULT = new AST_TYPE("int",false);:}
-                    |       TYPE_STRING:t     {:RESULT = new AST_TYPE("string",false);:}
-                    |       TYPE_VOID:t       {:RESULT = new AST_TYPE("void",false);:}
+type ::=                    TYPE_INT:t        {:RESULT = new AST_TYPE(t,false);:}
+                    |       TYPE_STRING:t     {:RESULT = new AST_TYPE(t,false);:}
+                    |       TYPE_VOID:t       {:RESULT = new AST_TYPE(t,false);:}
                     |       ID:name           {:RESULT = new AST_TYPE(name,true);:}
                     ;
 

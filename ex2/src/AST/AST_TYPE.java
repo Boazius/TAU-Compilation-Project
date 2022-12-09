@@ -51,7 +51,7 @@ public class AST_TYPE extends AST_Node {
         }
         else
         {
-            System.out.format("AST NODE TYPE %s\n", type);
+            System.out.format("AST NODE TYPE( %s )\n", type);
         }
 
 
