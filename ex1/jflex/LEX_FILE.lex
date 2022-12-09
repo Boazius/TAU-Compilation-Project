@@ -16,11 +16,11 @@ import java_cup.runtime.*;
 /************************************/
 /* OPTIONS AND DECLARATIONS SECTION */
 /************************************/
-   
-/*****************************************************/ 
+
+/*****************************************************/
 /* Lexer is the name of the class JFlex will create. */
 /* The code will be written to the file Lexer.java.  */
-/*****************************************************/ 
+/*****************************************************/
 %class Lexer
 
 /********************************************************************/
@@ -43,12 +43,12 @@ import java_cup.runtime.*;
 /****************/
 /* DECLARATIONS */
 /****************/
-/*****************************************************************************/   
+/*****************************************************************************/
 /* Code between %{ and %}, both of which must be at the beginning of a line, */
 /* will be copied verbatim (letter to letter) into the Lexer class code.     */
 /* Here you declare member variables and functions that are used inside the  */
-/* scanner actions.                                                          */  
-/*****************************************************************************/   
+/* scanner actions.                                                          */
+/*****************************************************************************/
 %{
 	/*********************************************************************************/
 	/* Create a new java_cup.runtime.Symbol with information about the current token */
@@ -59,14 +59,16 @@ import java_cup.runtime.*;
 	/*******************************************/
 	/* Enable line number extraction from main */
 	/*******************************************/
-	public int getLine() { return yyline + 1; } 
+	public int getLine() { return yyline + 1; }
+	/*function in the lexer skeleton, im adding just in case */
+	public int getCharPos() { return yycolumn;   }
 
 	/**********************************************/
 	/* Enable token position extraction from main */
 	/**********************************************/
 
-	public int getTokenStartPosition() { return yycolumn + 1; } 
-	
+	public int getTokenStartPosition() { return yycolumn + 1; }
+
 	/* check string is a number between 0 and 2^15 -1. */
 	/* returns -1 if invalid, else returns the number in int form */
 	public int getValidInt(String numString)
@@ -87,11 +89,10 @@ import java_cup.runtime.*;
 	        return num;
 	    return -1;
 	}
-
 %}
 
 /***********************/
-/* MACRO DECLARATIONS */
+/* MACRO DECALARATIONS */
 /***********************/
 LineTerminator	= \r | \n | \r\n
 WhiteSpace		= {LineTerminator} | [ \t] | [ \t\f]

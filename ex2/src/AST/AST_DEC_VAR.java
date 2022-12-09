@@ -20,9 +20,9 @@ public class AST_DEC_VAR extends AST_DEC {
         /* PRINT CORRESPONDING DERIVATION RULE */
         /***************************************/
         if (exp != null)
-            System.out.format(" decVar -> TYPE( %s ) NAME(%s) ASSIGN EXP SEMICOLON\n", typeNode.type, name);
+            System.out.format(" decVar -> TYPE NAME(%s) ASSIGN EXP SEMICOLON\n", name);
         else
-            System.out.format(" decVar -> TYPE( %s ) NAME(%s)SEMICOLON\n", typeNode.type, name);
+            System.out.format(" decVar -> TYPE NAME(%s)SEMICOLON\n", name);
 
 
         /*******************************/
@@ -41,7 +41,7 @@ public class AST_DEC_VAR extends AST_DEC {
         /*******************************/
         /* AST NODE TYPE = AST ID EXP */
         /*******************************/
-        System.out.format("AST NODE decVar ( %s ) (%s)\n", typeNode.type, name);
+        System.out.format("AST NODE decVar ( %s ) (%s)\n", name);
         if (exp != null) exp.PrintMe();
 
         /*********************************/

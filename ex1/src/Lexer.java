@@ -297,14 +297,16 @@ class Lexer implements java_cup.runtime.Scanner {
 	/*******************************************/
 	/* Enable line number extraction from main */
 	/*******************************************/
-	public int getLine() { return yyline + 1; } 
+	public int getLine() { return yyline + 1; }
+	/*function in the lexer skeleton, im adding just in case */
+	public int getCharPos() { return yycolumn;   }
 
 	/**********************************************/
 	/* Enable token position extraction from main */
 	/**********************************************/
 
-	public int getTokenStartPosition() { return yycolumn + 1; } 
-	
+	public int getTokenStartPosition() { return yycolumn + 1; }
+
 	/* check string is a number between 0 and 2^15 -1. */
 	/* returns -1 if invalid, else returns the number in int form */
 	public int getValidInt(String numString)
@@ -325,8 +327,6 @@ class Lexer implements java_cup.runtime.Scanner {
 	        return num;
 	    return -1;
 	}
-
-	/* TODO if double slash comment is at the end of the file and there is no line terminator error. */
 
 
   /**
