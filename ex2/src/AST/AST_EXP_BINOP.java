@@ -5,10 +5,6 @@ public class AST_EXP_BINOP extends AST_EXP {
     public AST_EXP left;
     public AST_EXP right;
 
-    /******************/
-    /* CONSTRUCTOR(S) */
-
-    /******************/
     public AST_EXP_BINOP(AST_EXP left, AST_EXP right, int OP) {
         /******************************/
         /* SET A UNIQUE SERIAL NUMBER */
@@ -61,7 +57,7 @@ public class AST_EXP_BINOP extends AST_EXP {
         }
 
 
-        System.out.print("AST NODE BINOP EXP\n");
+        System.out.print("AST_EXP_BINOP\n");
 
         /**************************************/
         /* print subtree recursively */

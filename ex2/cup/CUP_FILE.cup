@@ -220,13 +220,13 @@ type ::=                    TYPE_INT        {:RESULT = new AST_TYPE("int",false)
 /*            |  ['-'] INT | NIL | STRING */
 exp ::=                     var:v			                                 {: RESULT = new AST_EXP_VAR(v);:}
                     |       LPAREN exp:e1 RPAREN				             {: RESULT = new AST_EXP_SINGLE(e1);:}
-                    |       exp:e1 PLUS:b exp:e2                             {: RESULT = new AST_EXP_BINOP(e1 ,e2, 0);:}
-                    |       exp:e1 MINUS:b exp:e2                            {: RESULT = new AST_EXP_BINOP(e1 ,e2, 1);:}
-                    |       exp:e1 TIMES:b exp:e2                            {: RESULT = new AST_EXP_BINOP(e1 ,e2, 2);:}
-                    |       exp:e1 DIVIDE:b exp:e2                           {: RESULT = new AST_EXP_BINOP(e1 ,e2, 3);:}
-                    |       exp:e1 LT:b exp:e2                               {: RESULT = new AST_EXP_BINOP(e1 ,e2, 4);:}
-                    |       exp:e1 GT:b exp:e2                               {: RESULT = new AST_EXP_BINOP(e1 ,e2, 5);:}
-                    |       exp:e1 EQ:b exp:e2                               {: RESULT = new AST_EXP_BINOP(e1 ,e2, 6);:}
+                    |       exp:e1 PLUS exp:e2                             {: RESULT = new AST_EXP_BINOP(e1 ,e2, 0);:}
+                    |       exp:e1 MINUS exp:e2                            {: RESULT = new AST_EXP_BINOP(e1 ,e2, 1);:}
+                    |       exp:e1 TIMES exp:e2                            {: RESULT = new AST_EXP_BINOP(e1 ,e2, 2);:}
+                    |       exp:e1 DIVIDE exp:e2                           {: RESULT = new AST_EXP_BINOP(e1 ,e2, 3);:}
+                    |       exp:e1 LT exp:e2                               {: RESULT = new AST_EXP_BINOP(e1 ,e2, 4);:}
+                    |       exp:e1 GT exp:e2                               {: RESULT = new AST_EXP_BINOP(e1 ,e2, 5);:}
+                    |       exp:e1 EQ exp:e2                               {: RESULT = new AST_EXP_BINOP(e1 ,e2, 6);:}
                     |       ID:name LPAREN RPAREN                            {: RESULT = new AST_EXP_METHOD(null, name, null);:}
                     |       var:v DOT ID:name LPAREN RPAREN                  {: RESULT = new AST_EXP_METHOD(v, name, null);:}
                     |       ID:name LPAREN expList:args RPAREN               {: RESULT = new AST_EXP_METHOD(null, name, args);:}

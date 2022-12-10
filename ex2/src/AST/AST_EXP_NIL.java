@@ -2,10 +2,6 @@ package AST;
 
 public class AST_EXP_NIL extends AST_EXP {
 
-    /******************/
-    /* CONSTRUCTOR(S) */
-
-    /******************/
     public AST_EXP_NIL() {
         /******************************/
         /* SET A UNIQUE SERIAL NUMBER */
@@ -19,15 +15,11 @@ public class AST_EXP_NIL extends AST_EXP {
 
     }
 
-    /************************************************/
-    /* The printing message for an INT EXP AST node */
-
-    /************************************************/
     public void PrintMe() {
         /*******************************/
         /* AST NODE TYPE = AST ID EXP */
         /*******************************/
-        System.out.format("AST NODE NIL \n");
+        System.out.format("AST_EXP_NIL \n");
 
         /*********************************/
         /* Print to AST GRAPHIZ DOT file */

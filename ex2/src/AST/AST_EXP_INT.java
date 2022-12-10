@@ -3,10 +3,6 @@ package AST;
 public class AST_EXP_INT extends AST_EXP {
     public int value;
 
-    /******************/
-    /* CONSTRUCTOR(S) */
-
-    /******************/
     public AST_EXP_INT(int value) {
         /******************************/
         /* SET A UNIQUE SERIAL NUMBER */
@@ -32,7 +28,7 @@ public class AST_EXP_INT extends AST_EXP {
         /*******************************/
         /* AST NODE TYPE = AST INT EXP */
         /*******************************/
-        System.out.format("AST NODE INT( %d )\n", value);
+        System.out.format("AST_EXP_INT( %d )\n", value);
 
         /*********************************/
         /* Print to AST GRAPHIZ DOT file */

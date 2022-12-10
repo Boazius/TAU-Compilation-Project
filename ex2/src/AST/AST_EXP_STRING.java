@@ -3,10 +3,6 @@ package AST;
 public class AST_EXP_STRING extends AST_EXP {
     public String value;
 
-    /******************/
-    /* CONSTRUCTOR(S) */
-
-    /******************/
     public AST_EXP_STRING(String str) {
         /******************************/
         /* SET A UNIQUE SERIAL NUMBER */
@@ -24,15 +20,11 @@ public class AST_EXP_STRING extends AST_EXP {
         this.value = str;
     }
 
-    /************************************************/
-    /* The printing message for an STRING EXP AST node */
-
-    /************************************************/
     public void PrintMe() {
         /*******************************/
         /* AST NODE TYPE = AST STRING EXP */
         /*******************************/
-        System.out.format("AST NODE STRING( %s )\n", value);
+        System.out.format("AST_EXP_STRING( %s )\n", value);
 
         /*********************************/
         /* Print to AST GRAPHIZ DOT file */

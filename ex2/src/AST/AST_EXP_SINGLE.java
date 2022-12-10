@@ -3,10 +3,6 @@ package AST;
 public class AST_EXP_SINGLE extends AST_EXP {
     public AST_EXP exp;
 
-    /******************/
-    /* CONSTRUCTOR(S) */
-
-    /******************/
     public AST_EXP_SINGLE(AST_EXP son) {
         /******************************/
         /* SET A UNIQUE SERIAL NUMBER */
@@ -19,24 +15,14 @@ public class AST_EXP_SINGLE extends AST_EXP {
         System.out.print("exp -> (exp)\n");
 
         /*******************************/
-        /* COPY INPUT DATA NENBERS ... */
+        /* COPY INPUT DATA Members ... */
         /*******************************/
         this.exp = son;
     }
 
-    /*************************************************/
-    /* The printing message for a binop exp AST node */
-
-    /*************************************************/
     public void PrintMe() {
-        /*************************************/
-        /* AST NODE TYPE = AST SUBSCRIPT VAR */
-        /*************************************/
-        System.out.print("AST NODE SINGLE EXP\n");
+        System.out.print("AST_EXP_SINGLE\n");
 
-        /**************************************/
-        /* RECURSIVELY PRINT left + right ... */
-        /**************************************/
         if (exp != null) exp.PrintMe();
 
         /***************************************/
