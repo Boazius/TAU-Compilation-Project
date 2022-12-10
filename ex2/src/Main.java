@@ -45,6 +45,7 @@ public class Main
 			/* [5] 3 ... 2 ... 1 ... Parse !!! */
 			/***********************************/
 			AST = (AST_PROGRAM) p.parse().value;
+			/*TODO we never reach the error printing here..*/
 			file_writer.write("OK\n");
 			if(p.wasSuccessful)
 			{

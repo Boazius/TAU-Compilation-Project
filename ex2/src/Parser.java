@@ -350,6 +350,11 @@ public class Parser extends java_cup.runtime.lr_parser {
 	s = lexer.next_token();
 	//System.out.print(s.sym);
 	/*print the current token: [line,column] TokenName(value) */
+	if (s.sym == TokenNames.error)
+    {
+        lexerError = true;
+
+    }
 	System.out.print("[");
 	System.out.print(lexer.getLine());
 	System.out.print(":");
@@ -371,6 +376,7 @@ public class Parser extends java_cup.runtime.lr_parser {
 	public Lexer lexer;
 	/*will be false when reporting the error*/
     public boolean wasSuccessful = true;
+    public boolean lexerError = false;
     public int lineNumber = 0;
     public PrintWriter writer;
     /*parser constructor*/
@@ -383,17 +389,20 @@ public class Parser extends java_cup.runtime.lr_parser {
 	/*error printer*/
 	public void report_error(String message, Object info)
 	{
-        writer.write("ERROR("+lexer.getLine()+")\n");
-        writer.close();
-        lineNumber=lexer.getLine();
-        wasSuccessful=false;
-        System.out.print("ERROR >> ");
-		System.out.print("[");
-		System.out.print(lexer.getLine());
-		System.out.print(":");
-		System.out.print(lexer.getCharPos());
-		System.out.print("] ");
-		System.exit(0);
+	        if(lexerError)
+	            writer.write("ERROR\n");
+            else
+                writer.write("ERROR("+lexer.getLine()+")\n");
+            writer.close();
+            lineNumber=lexer.getLine();
+            wasSuccessful=false;
+            System.out.print("ERROR >> ");
+            System.out.print("[");
+            System.out.print(lexer.getLine());
+            System.out.print(":");
+            System.out.print(lexer.getCharPos());
+            System.out.print("] ");
+            System.exit(0);
 	}
 
 

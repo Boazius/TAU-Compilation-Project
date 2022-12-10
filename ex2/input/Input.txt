@@ -1,27 +1,32 @@
+//class intList decalartion
 class IntList
 {
     int head;
     IntList tail;
 }
 
-IntList MergeLists(IntList l1, int l2[])
+//MergeLists decalaration
+
+IntList MergeLists(IntList l1, IntList l2)
 {
+//if l1 is nil...
     if (l1 = nil)
     {
         return l2;
     }
+//if l2 is nil...
     if (l2 = nil)
     {
         return l1;
     }
-    
-    if (l1.head < l2.head)
+    //#if head1 is smaller than head2
+    if (l1.head =< l2.head)
     {
         IntList l3 := l1;
         l3.tail := MergeLists(l1.tail,l2);
         return l3;
     }
-    
+     //if head2 is smaller than head1
     if (l2.head < l1.head)
     {
         IntList l3 := l2;
@@ -74,3 +79,4 @@ void main()
         l := l.tail;
     }
 }
+
