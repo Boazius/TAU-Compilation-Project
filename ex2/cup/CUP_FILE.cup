@@ -204,8 +204,8 @@ dec ::=      				varDec:v 		{:RESULT = new AST_DEC_SINGLE(v);:}
 /* varDec ::= type ID ASSIGN newExp ';' */
 /* node(type,ID,null) or node(type,ID,exp) or node(type,ID,newExp) */
 varDec 	::= 				type:t ID:name SEMICOLON {: RESULT = new AST_DEC_VAR(t,name,null);:}
-					|		type:t ID:name ASSIGN exp:e {: RESULT = new AST_DEC_VAR(t,name,e);:}
-					|		type:t ID:name ASSIGN newExp:ne {: RESULT = new AST_DEC_VAR(t,name,ne);:}
+					|		type:t ID:name ASSIGN exp:e SEMICOLON {: RESULT = new AST_DEC_VAR(t,name,e);:}
+					|		type:t ID:name ASSIGN newExp:ne SEMICOLON {: RESULT = new AST_DEC_VAR(t,name,ne);:}
                     ;
 
 /* type ::= TYPE_INT | TYPE_STRING | TYPE_VOID | ID . they are all strings*/
