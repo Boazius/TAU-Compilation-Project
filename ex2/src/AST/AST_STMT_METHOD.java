@@ -34,7 +34,7 @@ public class AST_STMT_METHOD extends AST_STMT {
         /*******************************/
         /* AST NODE TYPE = AST INT METHOD */
         /*******************************/
-        System.out.format("AST NODE METHOD( %s )\n", id);
+        System.out.format("AST_STMT_METHOD( %s )\n", id);
         if (var != null) var.PrintMe();
         if (args != null) args.PrintMe();
 
