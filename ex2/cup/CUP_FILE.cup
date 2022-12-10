@@ -212,7 +212,7 @@ varDec 	::= 				type:t ID:name SEMICOLON {: RESULT = new AST_DEC_VAR(t,name,null
 type ::=                    TYPE_INT        {:RESULT = new AST_TYPE("int",false);:}
                     |       TYPE_STRING     {:RESULT = new AST_TYPE("string",false);:}
                     |       TYPE_VOID       {:RESULT = new AST_TYPE("void",false);:}
-                    |       ID:name           {:RESULT = new AST_TYPE(name,true);:}
+                    |       ID:name         {:RESULT = new AST_TYPE(name,true);:}
                     ;
 
 /*exp ::= var | '(' exp ')' | exp BINOP exp
@@ -316,14 +316,3 @@ stmtList	::=		        stmt:s	stmtList:l  {: RESULT = new AST_STMT_LIST(s,l);:}
 					|       stmt:s				{: RESULT = new AST_STMT_LIST(s,null); :}
 					;
 
-/*
-
-
-exp			::=		INT:i								{: RESULT = new AST_EXP_INT(i);          :}
-					| var:v								{: RESULT = new AST_EXP_VAR(v);          :}
-					| exp:e1 PLUS  exp:e2				{: RESULT = new AST_EXP_BINOP(e1, e2, 0);:}
-					| exp:e1 MINUS exp:e2				{: RESULT = new AST_EXP_BINOP(e1, e2, 1);:}
-					;
-
-
-*/

@@ -3,10 +3,6 @@ package AST;
 public class AST_EXP_VAR extends AST_EXP {
     public AST_VAR var;
 
-    /******************/
-    /* CONSTRUCTOR(S) */
-
-    /******************/
     public AST_EXP_VAR(AST_VAR var) {
         /******************************/
         /* SET A UNIQUE SERIAL NUMBER */
@@ -24,19 +20,10 @@ public class AST_EXP_VAR extends AST_EXP {
         this.var = var;
     }
 
-    /***********************************************/
-    /* The default message for an exp var AST node */
-
-    /***********************************************/
     public void PrintMe() {
-        /************************************/
-        /* AST NODE TYPE = EXP VAR AST NODE */
-        /************************************/
-        System.out.print("AST NODE EXP VAR\n");
 
-        /*****************************/
-        /* RECURSIVELY PRINT var ... */
-        /*****************************/
+        System.out.print("AST_EXP_VAR\n");
+
         if (var != null) var.PrintMe();
 
         /*********************************/
