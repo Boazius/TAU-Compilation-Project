@@ -1,16 +1,9 @@
 package AST;
 
 public class AST_TYPE extends AST_Node {
-    /************************/
-    /* simple variable name */
-    /************************/
     public String type; /*"int" or "void" or "string" or ID */
     public Boolean isID; /*is true iff not TYPE_INT, TYPE_VOID, TYPE_STRING*/
 
-    /******************/
-    /* CONSTRUCTOR(S) */
-
-    /******************/
     public AST_TYPE(String type,Boolean isID) {
         /******************************/
         /* SET A UNIQUE SERIAL NUMBER */
@@ -22,7 +15,7 @@ public class AST_TYPE extends AST_Node {
         /***************************************/
         if(isID)
         {
-            System.out.format("type -> ID( %s )\n", type);
+            System.out.format("type -> ID(%s)\n", type);
         }
         else
         {
@@ -37,21 +30,14 @@ public class AST_TYPE extends AST_Node {
         this.isID = isID;
     }
 
-    /**************************************************/
-    /* The printing message for a simple var AST node */
-
-    /**************************************************/
     public void PrintMe() {
-        /**********************************/
-        /* AST NODE TYPE = AST TYPE ID */
-        /**********************************/
         if(isID)
         {
-            System.out.format("AST NODE TYPE ID( %s )\n", type);
+            System.out.format("AST_TYPE ID(%s)\n", type);
         }
         else
         {
-            System.out.format("AST NODE TYPE( %s )\n", type);
+            System.out.format("AST_TYPE %s \n", type);
         }
 
 

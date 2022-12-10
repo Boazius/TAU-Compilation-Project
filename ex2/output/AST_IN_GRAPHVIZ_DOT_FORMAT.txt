@@ -1,7 +1,33 @@
 digraph
 {
 graph [ordering = "out"]
-v0 [label = "DEC LIST"];
-v1 [label = "START OF PROGRAM"];
+v0 [label = "TYPE int"];
+v1 [label = "Var Declaration: NAME(a)"];
 v1 -> v0;
+v2 [label = "Single Declaration"];
+v2 -> v1;
+v3 [label = "TYPE void"];
+v4 [label = "Var Declaration: NAME(b)"];
+v4 -> v3;
+v5 [label = "Single Declaration"];
+v5 -> v4;
+v6 [label = "TYPE string"];
+v7 [label = "SIMPLE VAR(a)"];
+v8 [label = "EXP VAR"];
+v8 -> v7;
+v9 [label = "Var Declaration: NAME(c)"];
+v9 -> v6;
+v9 -> v8;
+v10 [label = "Single Declaration"];
+v10 -> v9;
+v11 [label = "DEC LIST"];
+v11 -> v10;
+v12 [label = "DEC LIST"];
+v12 -> v5;
+v12 -> v11;
+v13 [label = "DEC LIST"];
+v13 -> v2;
+v13 -> v12;
+v14 [label = "START OF PROGRAM"];
+v14 -> v13;
 }

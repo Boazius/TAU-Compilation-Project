@@ -208,18 +208,16 @@ varDec 	::= 				type:t ID:name SEMICOLON {: RESULT = new AST_DEC_VAR(t,name,null
 					|		type:t ID:name ASSIGN newExp:ne {: RESULT = new AST_DEC_VAR(t,name,ne);:}
                     ;
 
-/* type ::= TYPE_INT | TYPE_STRING | TYPE_VOID | ID */
-/* TODO fix this so that it gets type directly from TYPE_INT,.. etc.*/
-type ::=                    TYPE_INT:t        {:RESULT = new AST_TYPE(t,false);:}
-                    |       TYPE_STRING:t     {:RESULT = new AST_TYPE(t,false);:}
-                    |       TYPE_VOID:t       {:RESULT = new AST_TYPE(t,false);:}
+/* type ::= TYPE_INT | TYPE_STRING | TYPE_VOID | ID . they are all strings*/
+type ::=                    TYPE_INT        {:RESULT = new AST_TYPE("int",false);:}
+                    |       TYPE_STRING     {:RESULT = new AST_TYPE("string",false);:}
+                    |       TYPE_VOID       {:RESULT = new AST_TYPE("void",false);:}
                     |       ID:name           {:RESULT = new AST_TYPE(name,true);:}
                     ;
 
 /*exp ::= var | '(' exp ')' | exp BINOP exp
 /*            |  [var DOT] ID '(' [exp [COMMA exp]*] ')'     */
 /*            |  ['-'] INT | NIL | STRING */
-/* node(????) */
 exp ::=                     var:v			                                 {: RESULT = new AST_EXP_VAR(v);:}
                     |       LPAREN exp:e1 RPAREN				             {: RESULT = new AST_EXP_SINGLE(e1);:}
                     |       exp:e1 PLUS:b exp:e2                             {: RESULT = new AST_EXP_BINOP(e1 ,e2, 0);:}
