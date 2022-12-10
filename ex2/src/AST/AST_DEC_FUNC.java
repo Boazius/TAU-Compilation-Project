@@ -21,8 +21,7 @@ public class AST_DEC_FUNC extends AST_DEC {
         /* PRINT CORRESPONDING DERIVATION RULE */
         /***************************************/
 
-        System.out.format("funcDec -> TYPE( %s ) NAME(%s)\n", type, name);
-
+        System.out.format("funcDec -> TYPE NAME(%s)\n", name);
 
         /*******************************/
         /* COPY INPUT DATA Members ... */
@@ -33,15 +32,10 @@ public class AST_DEC_FUNC extends AST_DEC {
         this.idList = idList;
     }
 
-    /************************************************/
-    /* The printing message for an INT EXP AST node */
-
-    /************************************************/
     public void PrintMe() {
-        /*******************************/
-        /* AST NODE TYPE = AST ID EXP */
-        /*******************************/
-        System.out.format("AST NODE decFUNC ( %s ) (%s)", type, name);
+
+        System.out.format("AST_DEC_FUNC %s", name);
+        if (type!=null) type.PrintMe();
         if (idList != null) idList.PrintMe();
         if (stmtList != null) stmtList.PrintMe();
 
@@ -49,7 +43,9 @@ public class AST_DEC_FUNC extends AST_DEC {
         /*********************************/
         /* Print to AST GRAPHIZ DOT file */
         /*********************************/
-        AST_GRAPHVIZ.getInstance().logNode(SerialNumber, String.format("Func Declaration TYPE(%s) NAME(%s)", type, name));
+        AST_GRAPHVIZ.getInstance().logNode(SerialNumber, String.format("Func Declaration TYPE NAME(%s)", name));
+        if (type != null)
+            AST_GRAPHVIZ.getInstance().logEdge(SerialNumber, type.SerialNumber);
         if (idList != null)
             AST_GRAPHVIZ.getInstance().logEdge(SerialNumber, idList.SerialNumber);
         if (stmtList != null)
