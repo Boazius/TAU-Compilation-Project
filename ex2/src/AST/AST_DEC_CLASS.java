@@ -6,10 +6,6 @@ public class AST_DEC_CLASS extends AST_DEC {
     String ext;
     public AST_CFIELD_LIST cfieldList;
 
-    /*********************************************************/
-    /* The default message for an unknown AST DECLERATION node */
-
-    /*********************************************************/
     public AST_DEC_CLASS(String name, String ext, AST_CFIELD_LIST cfieldList) {
         /******************************/
         /* SET A UNIQUE SERIAL NUMBER */
@@ -20,27 +16,29 @@ public class AST_DEC_CLASS extends AST_DEC {
         /* PRINT CORRESPONDING DERIVATION RULE */
         /***************************************/
 
-        System.out.format("decClass -> name( %s )\n", name);
+        if(ext == null)
+        {
+            System.out.format("classDec -> NAME( %s )\n", name);
+        }
+        else
+        {
+            System.out.format("classDec -> NAME( %s ) extends NAME( %s )\n", name,ext);
+        }
 
 
-        /*******************************/
-        /* COPY INPUT DATA NENBERS ... */
-        /*******************************/
         this.name = name;
         this.cfieldList = cfieldList;
         this.ext = ext;
     }
 
-    /************************************************/
-    /* The printing message for an INT EXP AST node */
-
-    /************************************************/
     public void PrintMe() {
         /*******************************/
         /* AST NODE TYPE = AST ID EXP */
         /*******************************/
-        System.out.format("AST NODE decClass ( %s )\n", name);
-        if (ext != null) System.out.format("extends %s", ext);
+        if (ext != null)
+            System.out.format("AST_DEC_CLASS ( %s ) extends %s\n", name, ext);
+        else
+            System.out.format("AST_DEC_CLASS ( %s )\n", name);
         if (cfieldList != null) cfieldList.PrintMe();
 
 

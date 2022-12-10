@@ -16,8 +16,8 @@ public class AST_CFIELD_LIST extends AST_Node {
         /***************************************/
         /* PRINT CORRESPONDING DERIVATION RULE */
         /***************************************/
-        if (tail != null) System.out.print("cfields -> cfield cfields\n");
-        if (tail == null) System.out.print("cfields -> cfield\n");
+        if (tail != null) System.out.print("cFieldList -> cfield cFieldList\n");
+        if (tail == null) System.out.print("cFieldList -> cfield\n");
 
         /*******************************/
         /* COPY INPUT DATA Members ... */
@@ -28,8 +28,7 @@ public class AST_CFIELD_LIST extends AST_Node {
 
     /*  printing message for a cFIELD list AST node */
     public void PrintMe() {
-        /* AST NODE TYPE = AST cFIELD LIST */
-        System.out.print("AST NODE CFIELD LIST\n");
+        System.out.print("AST_CFIELD_LIST\n");
 
         /* print entire list */
         if (head != null) head.PrintMe();

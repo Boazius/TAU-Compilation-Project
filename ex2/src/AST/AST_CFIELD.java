@@ -2,24 +2,18 @@ package AST;
 
 public class AST_CFIELD extends AST_Node {
     public AST_DEC dec;
-
-    public AST_CFIELD(AST_DEC v) {
+    public AST_CFIELD(AST_DEC dec) {
 
         System.out.println("cField -> varDec | funcDec ");
 
-        this.dec = v;
+
         SerialNumber = AST_Node_Serial_Number.getFresh();
+        this.dec = dec;
     }
 
     public void PrintMe() {
-        /********************************************/
-        /* AST NODE TYPE = AST ASSIGNMENT STATEMENT */
-        /********************************************/
-        System.out.print("AST NODE cField\n");
+        System.out.print("AST_CFIELD\n");
 
-        /***********************************/
-        /* print the AST_DEC subtree */
-        /***********************************/
         if (dec != null) dec.PrintMe();
 
         /***************************************/
@@ -27,7 +21,7 @@ public class AST_CFIELD extends AST_Node {
         /***************************************/
         AST_GRAPHVIZ.getInstance().logNode(
                 SerialNumber,
-                "CFIELD ");
+                "CFIELD");
 
         /****************************************/
         /* PRINT Edges to AST GRAPHVIZ DOT file */
