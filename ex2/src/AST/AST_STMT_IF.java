@@ -4,10 +4,6 @@ public class AST_STMT_IF extends AST_STMT {
     public AST_EXP cond;
     public AST_STMT_LIST body;
 
-    /*******************/
-    /*  CONSTRUCTOR(S) */
-
-    /*******************/
     public AST_STMT_IF(AST_EXP cond, AST_STMT_LIST body) {
         /******************************/
         /* SET A UNIQUE SERIAL NUMBER */
@@ -17,21 +13,18 @@ public class AST_STMT_IF extends AST_STMT {
         /***************************************/
         /* PRINT CORRESPONDING DERIVATION RULE */
         /***************************************/
-        System.out.print("stmt -> IF (exp) {stmts} \n");
+        /*IF ′(′ exp ′)′ ′{′ stmt [ stmt ]∗*/
+        System.out.print("stmt -> IF (exp) {stmtList} \n");
 
         this.cond = cond;
         this.body = body;
     }
 
-    /******************************************************/
-    /* The printing message for a statement list AST node */
-
-    /******************************************************/
     public void PrintMe() {
         /**************************************/
         /* AST NODE TYPE = AST STATEMENT LIST */
         /**************************************/
-        System.out.print("AST NODE STMT IF\n");
+        System.out.print("AST_STMT_IF\n");
 
         /*************************************/
         /* RECURSIVELY PRINT HEAD + TAIL ... */

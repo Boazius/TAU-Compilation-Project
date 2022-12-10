@@ -14,7 +14,7 @@ public class AST_DEC_SINGLE extends AST_DEC {
         System.out.print("dec ->  varDec | funcDec | classDec | arrayTypeDef \n");
 
         /*******************************/
-        /* COPY INPUT DATA Members ... */
+        /* COPY INPUT DATA Members */
         /*******************************/
         this.dec = dec;
     }

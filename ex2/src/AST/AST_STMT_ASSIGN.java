@@ -2,15 +2,11 @@ package AST;
 
 public class AST_STMT_ASSIGN extends AST_STMT {
     /***************/
-    /*  var := exp */
+    /*  var := exp; */
     /***************/
     public AST_VAR var;
     public AST_EXP exp;
 
-    /*******************/
-    /*  CONSTRUCTOR(S) */
-
-    /*******************/
     public AST_STMT_ASSIGN(AST_VAR var, AST_EXP exp) {
         /******************************/
         /* SET A UNIQUE SERIAL NUMBER */
@@ -20,7 +16,7 @@ public class AST_STMT_ASSIGN extends AST_STMT {
         /***************************************/
         /* PRINT CORRESPONDING DERIVATION RULE */
         /***************************************/
-        System.out.print("stmt -> var ASSIGN exp SEMICOLON\n");
+        System.out.print("stmt -> var:= exp;\n");
 
         /*******************************/
         /* COPY INPUT DATA NENBERS ... */
@@ -37,7 +33,7 @@ public class AST_STMT_ASSIGN extends AST_STMT {
         /********************************************/
         /* AST NODE TYPE = AST ASSIGNMENT STATEMENT */
         /********************************************/
-        System.out.print("AST NODE ASSIGN STMT\n");
+        System.out.print("AST_STMT_ASSIGN\n");
 
         /***********************************/
         /* RECURSIVELY PRINT VAR + EXP ... */

@@ -298,6 +298,7 @@ arrayTypeDef 	::= 	    ARRAY ID:name EQ type:t LBRACK RBRACK SEMICOLON 	{: RESUL
 /* stmt ::= IF ′(′ exp ′)′ ′{′ stmt [ stmt ]∗ ′}′                   */
 /* stmt ::= WHILE ′(′ exp ′)′ ′{′ stmt [ stmt ]∗ ′}′                 */
 /* stmt ::= [ var DOT ] ID ′(′ [ exp [ COMMA exp ]∗ ] ′)′ ’;’ '('   */
+/* TODO AST_DEC_SINGLE might be wrong for this?*/
 stmt		::=		        varDec: dec                                                 {: RESULT = new AST_DEC_SINGLE(dec);:}
                     |       var:v ASSIGN exp:e SEMICOLON								{: RESULT = new AST_STMT_ASSIGN(v,e); :}
                     |       var:v ASSIGN newExp:e SEMICOLON                             {: RESULT = new AST_STMT_ASSIGN(v,e); :}
