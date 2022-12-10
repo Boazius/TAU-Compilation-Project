@@ -293,7 +293,7 @@ arrayTypeDef 	::= 	    ARRAY ID:name EQ type:t LBRACK RBRACK SEMICOLON 	{: RESUL
 
 /* stmt ::= varDec                                      */
 /* stmt ::= var ASSIGN exp ';'                           */
-/* stmt ::= var ASSIGN newExp ';'        TODO another AST?                    */
+/* stmt ::= var ASSIGN newExp ';'                   */
 /* stmt ::= RETURN [exp] ';'                                    */
 /* stmt ::= IF ′(′ exp ′)′ ′{′ stmt [ stmt ]∗ ′}′                   */
 /* stmt ::= WHILE ′(′ exp ′)′ ′{′ stmt [ stmt ]∗ ′}′                 */

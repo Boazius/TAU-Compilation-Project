@@ -15,7 +15,7 @@ public class AST_ARRAY_TYPEDEF extends AST_DEC {
         /* PRINT CORRESPONDING DERIVATION RULE */
         /***************************************/
         /*TODO handle type*/
-        System.out.format("arrayDec ->  ARRAY ID( %s ) EQ ID(%s)\n", name, type);
+        System.out.format("arrayTypeDef ->  ARRAY NAME( %s ) = type[]\n", name);
 
         /*******************************/
         /* COPY INPUT DATA MEMBERS      */
@@ -28,15 +28,13 @@ public class AST_ARRAY_TYPEDEF extends AST_DEC {
     /* printing to console and dot file */
     /************************************************/
     public void PrintMe() {
-        /*******************************/
-        /* AST NODE TYPE = AST ID EXP */
-        /*******************************/
-        System.out.format("AST NODE ARRAY ID( %s ) EQ TYPE(%s)", name, type);
-
+        System.out.format("AST_ARRAY_TYPEDEF ID( %s ) = TYPE[]", name);
+        if (type!=null) type.PrintMe();
         /*********************************/
         /* Print to AST GRAPHIZ DOT file */
         /*********************************/
-        AST_GRAPHVIZ.getInstance().logNode(SerialNumber, String.format("Array Declaration NAME(%s) TYPE(%s)", name, type));
+        AST_GRAPHVIZ.getInstance().logNode(SerialNumber, String.format("Array Declaration NAME(%s)", name));
+        AST_GRAPHVIZ.getInstance().logEdge(SerialNumber, type.SerialNumber);
 
     }
 }
