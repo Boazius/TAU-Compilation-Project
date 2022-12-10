@@ -4,10 +4,7 @@ public class AST_NEW_EXP extends AST_EXP {
     public AST_TYPE t;
     public AST_EXP exp;
 
-    /******************/
-    /* CONSTRUCTOR(S) */
 
-    /******************/
     public AST_NEW_EXP(AST_TYPE t, AST_EXP exp) {
         /******************************/
         /* SET A UNIQUE SERIAL NUMBER */
@@ -19,27 +16,24 @@ public class AST_NEW_EXP extends AST_EXP {
         /***************************************/
         /*TODO check class maybe of type somehow */
         if (exp != null)
-            System.out.format("exp -> NEW type(%s) exp\n", t);
+            System.out.format("exp -> NEW type [exp]\n");
         else
-            System.out.format("exp -> NEW type(%s) \n", t);
+            System.out.format("exp -> NEW type \n");
 
 
         /*******************************/
-        /* COPY INPUT DATA NENBERS ... */
+        /* COPY INPUT DATA MEMBERS ... */
         /*******************************/
         this.t = t;
         this.exp = exp;
     }
 
-    /************************************************/
-    /* The printing message for an INT EXP AST node */
-
-    /************************************************/
     public void PrintMe() {
         /*******************************/
         /* AST NODE TYPE = AST ID EXP */
         /*******************************/
-        System.out.format("AST NODE NEW type( %s )\n", t);
+        System.out.format("AST_NEW_EXP\n");
+        if (t != null) t.PrintMe();
         if (exp != null) exp.PrintMe();
 
         /*********************************/
@@ -47,7 +41,8 @@ public class AST_NEW_EXP extends AST_EXP {
         /*********************************/
 
 
-        AST_GRAPHVIZ.getInstance().logNode(SerialNumber, String.format("NEW type(%s)", t));
+        AST_GRAPHVIZ.getInstance().logNode(SerialNumber, String.format("New Exp"));
+        if (t != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber, t.SerialNumber);
         if (exp != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber, exp.SerialNumber);
     }
 }

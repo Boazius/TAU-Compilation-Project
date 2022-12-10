@@ -20,7 +20,7 @@ public class AST_VAR_SUBSCRIPT extends AST_VAR {
         System.out.print("var -> var [ exp ]\n");
 
         /*******************************/
-        /* COPY INPUT DATA NENBERS ... */
+        /* COPY INPUT DATA MEMBERS ... */
         /*******************************/
         this.var = var;
         this.subscript = subscript;
@@ -34,7 +34,7 @@ public class AST_VAR_SUBSCRIPT extends AST_VAR {
         /*************************************/
         /* AST NODE TYPE = AST SUBSCRIPT VAR */
         /*************************************/
-        System.out.print("AST NODE SUBSCRIPT VAR\n");
+        System.out.print("AST_VAR_SUBSCRIPT\n");
 
         /****************************************/
         /* RECURSIVELY PRINT VAR + SUBSRIPT ... */

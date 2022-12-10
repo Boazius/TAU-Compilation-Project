@@ -4,10 +4,6 @@ public class AST_VAR_FIELD extends AST_VAR {
     public AST_VAR var;
     public String fieldName;
 
-    /******************/
-    /* CONSTRUCTOR(S) */
-
-    /******************/
     public AST_VAR_FIELD(AST_VAR var, String fieldName) {
         /******************************/
         /* SET A UNIQUE SERIAL NUMBER */
@@ -17,7 +13,7 @@ public class AST_VAR_FIELD extends AST_VAR {
         /***************************************/
         /* PRINT CORRESPONDING DERIVATION RULE */
         /***************************************/
-        System.out.format("var -> var DOT ID( %s )\n", fieldName);
+        System.out.format("var -> var.ID( %s )\n", fieldName);
 
         /*******************************/
         /* COPY INPUT DATA NENBERS ... */
@@ -34,7 +30,7 @@ public class AST_VAR_FIELD extends AST_VAR {
         /*********************************/
         /* AST NODE TYPE = AST FIELD VAR */
         /*********************************/
-        System.out.print("AST NODE FIELD VAR\n");
+        System.out.print("AST_VAR_FIELD\n");
 
         /**********************************************/
         /* RECURSIVELY PRINT VAR, then FIELD NAME ... */

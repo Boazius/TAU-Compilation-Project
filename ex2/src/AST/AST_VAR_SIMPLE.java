@@ -1,15 +1,8 @@
 package AST;
 
 public class AST_VAR_SIMPLE extends AST_VAR {
-    /************************/
-    /* simple variable name */
-    /************************/
     public String name;
 
-    /******************/
-    /* CONSTRUCTOR(S) */
-
-    /******************/
     public AST_VAR_SIMPLE(String name) {
         /******************************/
         /* SET A UNIQUE SERIAL NUMBER */
@@ -27,15 +20,11 @@ public class AST_VAR_SIMPLE extends AST_VAR {
         this.name = name;
     }
 
-    /**************************************************/
-    /* The printing message for a simple var AST node */
-
-    /**************************************************/
     public void PrintMe() {
         /**********************************/
         /* AST NODE TYPE = AST SIMPLE VAR */
         /**********************************/
-        System.out.format("AST NODE SIMPLE VAR( %s )\n", name);
+        System.out.format("AST_VAR_SIMPLE ID( %s )\n", name);
 
         /*********************************/
         /* Print to AST GRAPHIZ DOT file */
