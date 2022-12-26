@@ -14,7 +14,6 @@ public class AST_ARRAY_TYPEDEF extends AST_DEC {
         /***************************************/
         /* PRINT CORRESPONDING DERIVATION RULE */
         /***************************************/
-        /*TODO handle type*/
         System.out.format("arrayTypeDef ->  ARRAY NAME( %s ) = type[]\n", name);
 
         /*******************************/

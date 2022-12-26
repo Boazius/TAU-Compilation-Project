@@ -14,7 +14,6 @@ public class AST_NEW_EXP extends AST_EXP {
         /***************************************/
         /* PRINT CORRESPONDING DERIVATION RULE */
         /***************************************/
-        /*TODO check class maybe of type somehow */
         if (exp != null)
             System.out.format("exp -> NEW type [exp]\n");
         else

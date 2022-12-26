@@ -15,7 +15,6 @@ public class AST_DEC_VAR extends AST_DEC {
         /* SET A UNIQUE SERIAL NUMBER */
         /******************************/
         SerialNumber = AST_Node_Serial_Number.getFresh();
-        /* TODO type is not a string, but AST_TYPE. fix it in several places here!*/
         /***************************************/
         /* PRINT CORRESPONDING DERIVATION RULE */
         /***************************************/
@@ -41,7 +40,6 @@ public class AST_DEC_VAR extends AST_DEC {
         /*******************************/
         /* AST NODE TYPE = AST ID EXP */
         /*******************************/
-        /*TODO test this*/
         if (typeNode!= null) typeNode.PrintMe();
         System.out.format("AST_DEC_VAR ID(%s)\n", id);
         if (exp != null) exp.PrintMe();

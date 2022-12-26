@@ -121,8 +121,8 @@ non terminal AST_PROGRAM Program; /**/
 non terminal AST_DEC_LIST decList; /**/
 non terminal AST_DEC dec; /* abstract */
 /* non terminal AST_DEC_SINGLE */ /**/
-non terminal AST_DEC_VAR varDec; /* TODO handle AST_TYPE*/
-non terminal AST_TYPE type; /* abstract */ /*TODO add override a TOSTRING maybe?*/
+non terminal AST_DEC_VAR varDec; /**/
+non terminal AST_TYPE type; /* abstract */
 /* non terminal AST_TYPE_INT */ /**/
 /* non terminal AST_TYPE_STRING */ /**/
 /* non terminal AST_TYPE_VOID */ /**/
@@ -140,13 +140,13 @@ non terminal AST_VAR var; /*abstract*/
 /* non terminal AST_VAR_FIELD */ /**/
 /* non terminal AST_VAR_SUBSCRIPT */ /**/
 non terminal AST_EXP_LIST expList; /**/
-non terminal AST_NEW_EXP newExp; /*TODO handle AST_TYPE*/
-non terminal AST_DEC_FUNC funcDec; /*TODO handle AST_TYPE*/
+non terminal AST_NEW_EXP newExp;
+non terminal AST_DEC_FUNC funcDec;
 non terminal AST_ID_LIST IDList; /**/
 non terminal AST_DEC_CLASS classDec; /**/
 non terminal AST_CFIELD_LIST cFieldList; /**/
 non terminal AST_CFIELD cField; /**/
-non terminal AST_ARRAY_TYPEDEF arrayTypeDef; /*TODO handle AST_TYPE*/
+non terminal AST_ARRAY_TYPEDEF arrayTypeDef;
 non terminal AST_STMT stmt; /*abstract*/
 /*non terminal AST_STMT_ASSIGN*/ /**/
 /*non terminal AST_STMT_RETURN*/ /**/
@@ -307,7 +307,6 @@ arrayTypeDef 	::= 	    ARRAY ID:name EQ type:t LBRACK RBRACK SEMICOLON 	{: RESUL
 /* stmt ::= IF ′(′ exp ′)′ ′{′ stmt [ stmt ]∗ ′}′                   */
 /* stmt ::= WHILE ′(′ exp ′)′ ′{′ stmt [ stmt ]∗ ′}′                 */
 /* stmt ::= [ var DOT ] ID ′(′ [ exp [ COMMA exp ]∗ ] ′)′ ’;’ '('   */
-/* TODO AST_DEC_SINGLE might be wrong for this?*/
 stmt		::=		        varDec: dec                                                 {: RESULT = new AST_DEC_SINGLE(dec);:}
                     |       var:v ASSIGN exp:e SEMICOLON								{: RESULT = new AST_STMT_ASSIGN(v,e); :}
                     |       var:v ASSIGN newExp:e SEMICOLON                             {: RESULT = new AST_STMT_ASSIGN(v,e); :}

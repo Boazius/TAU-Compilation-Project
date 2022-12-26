@@ -30,7 +30,6 @@ public class AST_ID_LIST extends AST_Node {
 
     /******************************************************/
     /* The printing message for a statement list AST node */
-    /* TODO type.type is bad, u need to printme on the node AST_TYPE*/
     /******************************************************/
     public void PrintMe() {
 
