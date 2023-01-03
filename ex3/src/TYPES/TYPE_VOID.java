@@ -23,4 +23,7 @@ public class TYPE_VOID extends TYPE
 		}
 		return instance;
 	}
+	public String getType() {
+		return "TYPE_VOID";
+	}
 }

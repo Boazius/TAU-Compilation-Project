@@ -1,31 +1,27 @@
 package TYPES;
 
-public class TYPE_STRING extends TYPE {
+public class TYPE_NIL extends TYPE {
     /**************************************/
     /* USUAL SINGLETON IMPLEMENTATION ... */
     /**************************************/
-    private static TYPE_STRING instance = null;
+    private static TYPE_NIL instance = null;
 
     /*****************************/
     /* PREVENT INSTANTIATION ... */
 
     /*****************************/
-    protected TYPE_STRING() {
-        this.name = "string";
+    protected TYPE_NIL() {
+        this.name = "NIL";
     }
 
-    /******************************/
-    /* GET SINGLETON INSTANCE ... */
-
-    /******************************/
-    public static TYPE_STRING getInstance() {
+    public static TYPE_NIL getInstance() {
         if (instance == null) {
-            instance = new TYPE_STRING();
+            instance = new TYPE_NIL();
         }
         return instance;
     }
 
     public String getType() {
-        return "TYPE_STRING";
+        return "TYPE_NIL";
     }
 }

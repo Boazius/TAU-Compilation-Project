@@ -1,24 +1,24 @@
 package TYPES;
 
-public class TYPE_FUNCTION extends TYPE
-{
-	/***********************************/
-	/* The return type of the function */
-	/***********************************/
-	public TYPE returnType;
+public class TYPE_FUNCTION extends TYPE {
 
-	/*************************/
-	/* types of input params */
-	/*************************/
-	public TYPE_LIST params;
-	
-	/****************/
-	/* CTROR(S) ... */
-	/****************/
-	public TYPE_FUNCTION(TYPE returnType,String name,TYPE_LIST params)
-	{
-		this.name = name;
-		this.returnType = returnType;
-		this.params = params;
-	}
+    public TYPE returnType;
+    public String name;
+    public TYPE_LIST arguments; /*useful to compare functions*/
+
+    public TYPE_FUNCTION(TYPE returnType, String name, TYPE_LIST arguments) {
+        this.arguments = arguments;
+        this.name = name;
+        this.returnType = returnType;
+    }
+
+    @Override
+    public boolean isFunction() {
+        return true;
+    }
+
+    public String getType() {
+        return "TYPE_FUNCTION";
+    }
+
 }
