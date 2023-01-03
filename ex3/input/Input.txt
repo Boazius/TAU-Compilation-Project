@@ -1,37 +1,32 @@
-int IsPrime(int p)
+class Grandfather
 {
-    int i := 2;
-    int j := 2;
-    
-    while (i<p)
-    {
-        while (j<p)
-        {
-            if (i*j = p)
-            {
-                 return 1;
-            }
-            j := j+1;
-        }
-        i := i+1;
-    }
-    return 0;
+	void WALK(){ PrintInt(8); }
+	void RUN() { PrintInt(7); }
+	void SWIM(){ PrintInt(2); }
 }
 
-void PrintPrimes(int start)
+class Father extends Grandfather
 {
-    int p := start;
-    
-    while (p < end+1)
-    {
-        if (IsPrime(p))
-        {
-            PrintInt(p);
-        }
-    }
+	void SWIM(){ PrintInt(3); }
+	void WALK(){ PrintInt(6); }
+}
+
+class Son extends Father
+{
+	void RUN(){ PrintInt(2); }
 }
 
 void main()
 {
-    PrintPrimes(2,100);
+	Grandfather g1 := new Grandfather;
+	Grandfather g2 := new Father;
+	Grandfather g3 := new Son;
+
+	Father f1 := new Father;
+	Father f2 := new Son;
+
+	Son s := new Son;
+	
+	s.WALK();
+	g2.RUN();
 }
