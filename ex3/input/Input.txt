@@ -1,33 +1,37 @@
-string left := "LEFT";
-string right := "RIGHT";
-
-class Person
+int IsPrime(int p)
 {
-    int left;
-    int right;
+    int i := 2;
+    int j := 2;
+    
+    while (i<p)
+    {
+        while (j<p)
+        {
+            if (i*j = p)
+            {
+                 return 1;
+            }
+            j := j+1;
+        }
+        i := i+1;
+    }
+    return 0;
 }
 
-int foo(int d, int k)
+void PrintPrimes(int start)
 {
-    int left := 50;
-    int right := 40;
-	
-    if (d+k = 17)
+    int p := start;
+    
+    while (p < end+1)
     {
-        Person left;
-        Person right;
-		
-        return left.left;
+        if (IsPrime(p))
+        {
+            PrintInt(p);
+        }
     }
-	
-    return left;
 }
 
 void main()
 {
-    if (foo(2,4))
-    {
-        PrintInt(800);
-    }
+    PrintPrimes(2,100);
 }
-

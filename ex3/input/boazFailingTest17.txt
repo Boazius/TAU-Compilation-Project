@@ -1,0 +1,12 @@
+
+class Person
+{
+	Person bestFriend := nil;
+}
+
+string bestFriend := "Jesse";
+
+class Student extends Person
+{
+	int d := bestFriend;
+}
