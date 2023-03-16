@@ -1,50 +1,45 @@
 package AST;
 
-public class AST_STMT_RETURN extends AST_STMT
-{
-	/****************/
-	/* DATA MEMBERS */
-	/****************/
-	public AST_EXP exp;
+import IR.IR;
+import IR.IRcommand_Return;
+import SYMBOL_TABLE.SYMBOL_TABLE;
+import TEMP.TEMP;
+import TYPES.TYPE;
+import TYPES.TYPE_VOID;
 
-	/*******************/
-	/*  CONSTRUCTOR(S) */
-	/*******************/
-	public AST_STMT_RETURN(AST_EXP exp)
-	{
-		/******************************/
-		/* SET A UNIQUE SERIAL NUMBER */
-		/******************************/
-		SerialNumber = AST_Node_Serial_Number.getFresh();
+public class AST_STMT_RETURN extends AST_STMT {
 
-		this.exp = exp;
-	}
 
-	/************************************************************/
-	/* The printing message for a function declaration AST node */
-	/************************************************************/
-	public void PrintMe()
-	{
-		/*************************************/
-		/* AST NODE TYPE = AST SUBSCRIPT VAR */
-		/*************************************/
-		System.out.print("AST NODE STMT RETURN\n");
+    public AST_STMT_RETURN(int line) {
 
-		/*****************************/
-		/* RECURSIVELY PRINT exp ... */
-		/*****************************/
-		if (exp != null) exp.PrintMe();
+        SerialNumber = AST_Node_Serial_Number.getFresh();
+        this.line = line;
 
-		/***************************************/
-		/* PRINT Node to AST GRAPHVIZ DOT file */
-		/***************************************/
-		AST_GRAPHVIZ.getInstance().logNode(
-			SerialNumber,
-			"RETURN");
+        System.out.print("stmt -> return;\n");
 
-		/****************************************/
-		/* PRINT Edges to AST GRAPHVIZ DOT file */
-		/****************************************/
-		if (exp != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,exp.SerialNumber);
-	}
+    }
+
+    public void PrintMe() {
+
+
+        System.out.format("AST %s NODE\n", "STMT_RETURN");
+
+
+        AST_GRAPHVIZ.getInstance().logNode(SerialNumber, "STMT_RETURN");
+    }
+
+    public TYPE SemantMe() {
+        System.out.println("STMT RETURN - semant me");
+        int a = SYMBOL_TABLE.getInstance().findFunc("void");
+        if (a == 0) {
+            System.out.format("Error[%d] in return statement!", line);
+            printError(line);
+        }
+        return TYPE_VOID.getInstance();
+    }
+
+    public TEMP IRme() {
+        IR.getInstance().Add_IRcommand(new IRcommand_Return(null));
+        return null;
+    }
 }

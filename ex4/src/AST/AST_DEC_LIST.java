@@ -1,76 +1,49 @@
 package AST;
 
-import TYPES.*;
-import TEMP.*;
+import TEMP.TEMP;
+import TYPES.TYPE;
 
-public class AST_DEC_LIST extends AST_Node
-{
-	/****************/
-	/* DATA MEMBERS */
-	/****************/
-	public AST_DEC head;
-	public AST_DEC_LIST tail;
+public class AST_DEC_LIST extends AST_Node {
+    public AST_DEC head;
+    public AST_DEC_LIST tail;
 
-	/******************/
-	/* CONSTRUCTOR(S) */
-	/******************/
-	public AST_DEC_LIST(AST_DEC head,AST_DEC_LIST tail)
-	{
-		/******************************/
-		/* SET A UNIQUE SERIAL NUMBER */
-		/******************************/
-		SerialNumber = AST_Node_Serial_Number.getFresh();
+    public AST_DEC_LIST(AST_DEC head, AST_DEC_LIST tail) {
+        SerialNumber = AST_Node_Serial_Number.getFresh();
+        if (tail != null) System.out.print("decs -> dec decs\n");
+        if (tail == null) System.out.print("decs -> dec      \n");
+        this.head = head;
+        this.tail = tail;
+    }
 
-		this.head = head;
-		this.tail = tail;
-	}
+    public void PrintMe() {
+        System.out.format("AST %s NODE\n", "DEC_LIST");
 
-	public TEMP IRme()
-	{
-		if (head != null) head.IRme();
-		if (tail != null) tail.IRme();
-		
-		return null;			
-	}
+        if (head != null) head.PrintMe();
+        if (tail != null) tail.PrintMe();
+        AST_GRAPHVIZ.getInstance().logNode(SerialNumber, "DEC_LIST");
 
-	public TYPE SemantMe()
-	{		
-		/*************************************/
-		/* RECURSIVELY PRINT HEAD + TAIL ... */
-		/*************************************/
-		if (head != null) head.SemantMe();
-		if (tail != null) tail.SemantMe();
-		
-		return null;	
-	}
+        if (head != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber, head.SerialNumber);
+        if (tail != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber, tail.SerialNumber);
 
-	/********************************************************/
-	/* The printing message for a declaration list AST node */
-	/********************************************************/
-	public void PrintMe()
-	{
-		/********************************/
-		/* AST NODE TYPE = AST DEC LIST */
-		/********************************/
-		System.out.print("AST NODE DEC LIST\n");
+    }
 
-		/*************************************/
-		/* RECURSIVELY PRINT HEAD + TAIL ... */
-		/*************************************/
-		if (head != null) head.PrintMe();
-		if (tail != null) tail.PrintMe();
+    public TYPE SemantMe() {
+        System.out.println("DEC_LIST" + "- semantme");
+        if (head != null) {
+            head.SemantMe();
+        }
+        if (tail != null) {
+            tail.SemantMe();
+        }
+        return null;
+    }
 
-		/**********************************/
-		/* PRINT to AST GRAPHVIZ DOT file */
-		/**********************************/
-		AST_GRAPHVIZ.getInstance().logNode(
-			SerialNumber,
-			"DEC\nLIST\n");
-				
-		/****************************************/
-		/* PRINT Edges to AST GRAPHVIZ DOT file */
-		/****************************************/
-		if (head != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,head.SerialNumber);
-		if (tail != null) AST_GRAPHVIZ.getInstance().logEdge(SerialNumber,tail.SerialNumber);
-	}
+    public TEMP IRme() {
+        System.out.println("DEC_LIST" + "- IRme");
+
+        if (head != null) head.IRme();
+        if (tail != null) tail.IRme();
+
+        return null;
+    }
 }

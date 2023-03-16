@@ -3,45 +3,37 @@
 /***********/
 package TEMP;
 
-/*******************/
-/* GENERAL IMPORTS */
-/*******************/
 
-/*******************/
-/* PROJECT IMPORTS */
-/*******************/
 
-public class TEMP_FACTORY
-{
-	private int counter=0;
-	
-	public TEMP getFreshTEMP()
-	{
-		return new TEMP(counter++);
-	}
-	
-	/**************************************/
-	/* USUAL SINGLETON IMPLEMENTATION ... */
-	/**************************************/
-	private static TEMP_FACTORY instance = null;
+public class TEMP_FACTORY {
+    /**************************************/
+    private static TEMP_FACTORY instance = null;
+    private int counter = 0;
 
-	/*****************************/
-	/* PREVENT INSTANTIATION ... */
-	/*****************************/
-	protected TEMP_FACTORY() {}
+    /**************************************/
+    /* USUAL SINGLETON IMPLEMENTATION ... */
+    /*****************************/
+    protected TEMP_FACTORY() {
+    }
 
-	/******************************/
-	/* GET SINGLETON INSTANCE ... */
-	/******************************/
-	public static TEMP_FACTORY getInstance()
-	{
-		if (instance == null)
-		{
-			/*******************************/
-			/* [0] The instance itself ... */
-			/*******************************/
-			instance = new TEMP_FACTORY();
-		}
-		return instance;
-	}
+    /*****************************/
+    /* PREVENT INSTANTIATION ... */
+
+    /******************************/
+    public static TEMP_FACTORY getInstance() {
+        if (instance == null) {
+            /*******************************/
+            /* [0] The instance itself ... */
+            /*******************************/
+            instance = new TEMP_FACTORY();
+        }
+        return instance;
+    }
+
+    /******************************/
+    /* GET SINGLETON INSTANCE ... */
+
+    public TEMP getFreshTEMP() {
+        return new TEMP(counter++);
+    }
 }

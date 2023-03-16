@@ -10,23 +10,24 @@ package IR;
 /*******************/
 /* PROJECT IMPORTS */
 /*******************/
-import TEMP.*;
-import MIPS.*;
 
-public class IRcommand_Jump_Label extends IRcommand
-{
-	String label_name;
-	
-	public IRcommand_Jump_Label(String label_name)
-	{
-		this.label_name = label_name;
-	}
-	
-	/***************/
-	/* MIPS me !!! */
-	/***************/
-	public void MIPSme()
-	{
-		MIPSGenerator.getInstance().jump(label_name);
-	}
+import MIPS.MIPSGenerator;
+
+public class IRcommand_Jump_Label extends IRcommand_Conditional_Jump {
+    //String label;
+
+    public IRcommand_Jump_Label(String label) {
+        this.label = label;
+        changeName("IRcommand_Conditional_Jump");
+    }
+
+    /***************/
+    /* MIPS me !!! */
+
+    /***************/
+    public void MIPSme() {
+        System.out.println("IRcommand_Jump_Label" + "- MIPSme");
+
+        MIPSGenerator.getInstance().jump(label);
+    }
 }
