@@ -1,6 +1,5 @@
 package CFG;
 
-
 import IR.IRcommand;
 
 import java.util.HashSet;

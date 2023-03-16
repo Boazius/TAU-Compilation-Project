@@ -26,10 +26,6 @@ public class IR {
     protected IR() {
     }
 
-    /***************/
-    /* MIPS me !!! */
-
-    /******************************/
     public static IR getInstance() {
         if (instance == null) {
             /*******************************/
@@ -48,23 +44,6 @@ public class IR {
             this.tail = new IRcommandList(cmd, null);
         } else {
             IRcommandList it = tail;
-            while ((it != null) && (it.tail != null)) {
-                it = it.tail;
-            }
-            it.tail = new IRcommandList(cmd, null);
-        }
-    }
-
-    /**************************************/
-    /* USUAL SINGLETON IMPLEMENTATION ... */
-
-    public void Add_IRcommand_initialization(IRcommand cmd) {
-        if ((initialization == null) && (initializationTail == null)) {
-            this.initialization = cmd;
-        } else if ((initialization != null) && (initializationTail == null)) {
-            this.initializationTail = new IRcommandList(cmd, null);
-        } else {
-            IRcommandList it = initializationTail;
             while ((it != null) && (it.tail != null)) {
                 it = it.tail;
             }

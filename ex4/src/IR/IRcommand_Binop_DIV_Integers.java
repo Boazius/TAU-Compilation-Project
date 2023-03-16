@@ -26,10 +26,6 @@ public class IRcommand_Binop_DIV_Integers extends IRcommand_Binop {
         changeName("IRcommand_Binop");
     }
 
-    /***************/
-    /* MIPS me !!! */
-
-    /***************/
     public void MIPSme() {
         System.out.println("IRcommand_Binop_DIV_Integers" + "- MIPSme");
 
