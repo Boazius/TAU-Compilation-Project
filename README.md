@@ -1,4 +1,4 @@
-# Tau Compilation course 2022a repository
+# Tel Aviv University (TAU) Compilation course 2022a repository
 ##### Author: Boaz Yakubov
 #### Course Instructor: David Trabish
 based on his repo:  https://github.com/davidtr1037/compilation-tau/
