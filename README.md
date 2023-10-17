@@ -18,7 +18,7 @@
 <h3 align="center">Tel Aviv University Compilation Project</h3>
 
   <p align="center">
-    Fully functional Compiler for a made up programming language called "L", to MIPS assembly. <br> Programmed using Java, Jflex, Java_cup. <br> Project made to run on linux.  <!-- TODO -->
+    Fully functional Compiler for a made up programming language called "L", to MIPS assembly. <br> Programmed using Java, Jflex, Java_cup. <br> Project made to run on linux.  <br> Created as part of the 2022 Compilation course in Tel Aviv University
     <br />
     <a href="https://github.com/Boazius/TAU-Compilation-Project/issues">Report Bug</a>
     ·
