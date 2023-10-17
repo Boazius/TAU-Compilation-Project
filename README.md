@@ -64,6 +64,7 @@ This repository contains a complete compiler for the "L" programming language, w
 
 **Each exercise has its dedicated folder within the repository (i.e ex1, ex2..), containing the source code and any relevant files**
 
+<!--- Exercise 1 --->
 # Exercise 1 - A lexical scanner based on JFlex.
 
 The first exercise implements a lexical scanner for the "L" programming language using JFlex. The scanner is designed to tokenize an input "L" program and generate a tokenized representation of the input. 
@@ -88,7 +89,6 @@ The exercise defines various token names, including parentheses, brackets, brace
 - **Input:** The input for this exercise is a single text file containing an "L" program.
 - **Output:** A single text file that contains a tokenized representation of the input program. Each token appears on a separate line, along with the line number it appeared on and the character position inside that line. In case of any lexical error, the output file should contain the word "ERROR."
 
-
 ## Running the Lexical Scanner
 
 To run the Lexical Scanner for the "L" programming language, please ensure that JFlex is set up properly on your Linux system (or WSL). You can follow the setup instructions provided in the next section before proceeding with the steps below.
@@ -112,12 +112,49 @@ This command performs the following steps:
 - Runs the LEXER on input/Input.txt
 - outputs the result to output/OutputTokens.txt and to the terminal
 
-# Exercise 2 - 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!---- Exercise 2 --->
+# Exercise 2 - CUP Based Parser
+The full specification can be found [Here](./ex2/ex2.pdf)
+
+The second exercise involves implementing a CUP based parser for the "L" programming language, building upon the JFlex scanner from Exercise 1. The parser takes a single text file containing an "L" program as input and outputs a single text file indicating whether the input program is syntactically valid. Additionally, the parser internally creates an abstract syntax tree (AST) for the input program if the syntax is correct.
+
+## L Syntax
+The context-free grammar for the "L" programming language is specified here:
+<img src="images/LCFG.png" alt="L CFG" width="400"/>
+
+To ensure proper functionality, it's crucial to feed this grammar to CUP and resolve any potential shift-reduce conflicts. The operator precedence is outlined in Table 2:
+<img src="images/LCFG_precedence.png" alt="precedence" width="400"/>
+
+### Input and Output
+
+- **Input:** The input for this exercise is a single text file containing an "L" program.
+- **Output:** A single text file that contains either "OK" when the input program has correct syntax, "ERROR(location)" when there is a syntax error (with location indicating the line number of the first encountered error), or "ERROR" when there is a lexical error.
 
 
+### Instructions
 
+1. Navigate to the "ex2" directory within the repository.
+2. Open a terminal window in this directory.
+3. run ```make``` as usual which 
+   1. Generates the relevant files using jflex/cup
+   2. Compiles the modules into PARSER
+   3. Runs PARSER on input/Input.txt
+   4. Generates an image of the resulting syntax tree (for debugging only)
+
+The provided `ex2/Makefile` builds the parser into the `ex2/PARSER` directory. The `PARSER` can be executed via the command line with the following parameters:
+
+```bash
+java -jar PARSER <input_file_path> <output_file_path>
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!---- Exercise 3 --->
+# Exercise 3 - 
+The full specification can be found [Here](./ex3/ex3.pdf)
+
 
 ### Built With
 <!-- Fill the relevant technologies shields here TODO -->
