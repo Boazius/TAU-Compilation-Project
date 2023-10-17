@@ -26,31 +26,7 @@
   </p>
 </div>
 
-<!-- TABLE OF CONTENTS TODO -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
+
 
 <!-- ABOUT THE PROJECT -->
 # About The Project
@@ -63,6 +39,40 @@ This repository contains a complete compiler for the "L" programming language, w
 
 
 **Each exercise has its dedicated folder within the repository (i.e ex1, ex2..), containing the source code and any relevant files**
+
+
+<!-- GETTING STARTED -->
+# Getting Started
+<!-- TODO -->
+To begin working on the compiler for the "L" language, follow the steps below for setting up your development environment.
+
+### 1. Install WSL (Windows Subsystem for Linux)
+
+If you are using Windows, it is recommended to set up the Windows Subsystem for Linux (WSL) to ensure a seamless development experience. You can follow the instructions [here](https://docs.microsoft.com/en-us/windows/wsl/install) to install WSL on your machine.
+
+### 2. Install the necessary programs
+
+Ensure that you have the Java Development Kit (JDK), make, jflex installed on your WSL system.
+you can use the following commands:
+```
+apt update
+apt upgrade
+apt install openjdk-19-jdk-headless (or some other jdk)
+apt install jflex (this will also install CUP)
+apt install make
+```
+you can check that it worked with:
+```
+java --version
+javac --version
+jflex --version
+cup -version
+make --version
+```
+
+now, you can use the wsl terminal in the repo folder to follow along the exercises:
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!--- Exercise 1 --->
 # Exercise 1 - A lexical scanner based on JFlex.
@@ -182,6 +192,8 @@ for example:
    3. Generates an image of the resulting syntax tree
    4. Generates images which describe the changes in the symbol table
 
+make has targets for 'debug' and 'compile', where compile doesn't generate the syntax tree and symbol table.
+
 The makefile for this exercise is located at the following path: `ex3/Makefile`. This makefile will build the semantic analyzer into the `ex3/COMPILER` directory. You can run the COMPILER via the command line using the following parameters:
 
 ```bash
@@ -190,95 +202,73 @@ java -jar COMPILER <input_file_path> <output_file_path>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+# Exercise 4 - Code Generation
+The full specification can be found [Here](./ex4/ex4.pdf)
 
+The fourth and final exercise entails implementing the code generation phase for "L" programs. The chosen destination language is MIPS assembly, known for its straightforward syntax, complete toolchain, and ample available tutorials.
 
+SPIM is used to run the MIPS code that is generated using the L compiler.
+
+### Runtime Checks
+
+L enforces several runtime checks, including division by zero, invalid pointer dereference, and out-of-bound array access. The Specification provides guidelines on how to handle these scenarios effectively.
+
+L will also utilize some system calls that MIPS supports:
+<img src="images/sysCalls.png" alt="precedence" width="400"/>
+
+for example in order to print "Illegal Division by Zero" where applicable, and exiting gracefully using Exit().
+
+### Program Entry Point (main)
+
+Every valid L program includes a main function that serves as the entry point of execution. The README provides information on the required signature and the function's role in the program's execution flow.
+
+## Input and Output
+
+- **Input:** The input for this exercise is a single text file containing an "L" program.
+- **Output:** A single text file that contains the translation of the input program into MIPS assembly.
+
+## Instructions
+
+1. Navigate to the "ex4" directory within the repository.
+2. Open a terminal window in this directory.
+3. run ```make everything``` which 
+   1. Generates the relevant files using jflex/cup
+   2. Compiles the modules into COMPILER
+   3. COMPILER then converts the input file into the output file containing MIPS code
+   4. spim  runs on the MIPS code and outputs the result.
+
+The makefile for this exercise is located at the following path: `ex3/Makefile`. This makefile will build the semantic analyzer into the `ex3/COMPILER` directory. You can run the COMPILER via the command line using the following parameters:
+
+```bash
+java -jar COMPILER <input_file_path> <output_file_path>
+```
+
+### Command-line Usage
+
+The COMPILER is invoked via the command line using the following parameters:
+
+```bash
+java -jar COMPILER <input_file_path> <output_file_path>
+```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Built With
 <!-- Fill the relevant technologies shields here TODO -->
-* [![Python][Python-shield]][Python-url]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- GETTING STARTED -->
-## Getting Started
-<!-- TODO -->
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-<!-- TODO -->
-This is an example of how to list things you need to use the software and how to install them.
-
-* npm
-
-  ```sh
-  npm install npm@latest -g
-  ```
-
-### Installation
-<!-- TODO -->
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-
-   ```sh
-   git clone https://github.com/Boazius/TAU-Compilation-Project.git
-   ```
-
-3. Install NPM packages
-
-   ```sh
-   npm install
-   ```
-
-4. Enter your API in `config.js`
-
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- USAGE EXAMPLES -->
-## Usage
-<!-- TODO -->
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- ROADMAP -->
-## Roadmap
-<!-- TODO -->
-* [ ] Feature 1
-* [ ] Feature 2
-* [ ] Feature 3
-  * [ ] Nested Feature
-
-See the [open issues](https://github.com/Boazius/TAU-Compilation-Project/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- CONTRIBUTING -->
-## Contributing
-<!-- TODO -->
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+* [![Java][Java-shield]][Java-url]
+* Jflex
+* Java CUP
+* make
+* A LOT of Coffee
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- LICENSE -->
 ## License
-<!-- TODO -->
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+This repo is Distributed under the Apache License 2.0. See `LICENSE.txt` for more information.
+
+The specifications and Compilation course content (The L language, ex1.pdf, ex2.pdf, ex3.pdf, ex4.pdf and every file) are the property of Tel Aviv University Compilation course staff of 2022, i do not own them in any way, and are only here for documentation's sake.
+
+this repository was forked from https://github.com/davidtr1037/compilation-tau/
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -292,9 +282,12 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
-* []()
-* []()
+* [Professor Noam Rinetsky](https://www.tau.ac.il/profile/maon) - taught the course!
+* [David Trabizh](https://www.tau.ac.il/profile/davivtra) - Instructed for this course
+* Microsoft, for making WSL, VSCode, and many more tools i used during this course
+* Students who took the course on 2022a - you made some great suggestions and i wouldnt have made it without you!
+* Gerwin Klein and his team, who made jflex: https://www.jflex.de/
+* Whoever made JAVA CUP at http://www2.cs.tum.edu/projects/cup/
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -315,3 +308,5 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [product-screenshot]: images/screenshot.png
 [Python-shield]: https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54
 [Python-url]: https://www.python.org/
+[java-shield]: https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white
+[java-url]: https://www.java.com
