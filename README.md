@@ -93,13 +93,13 @@ The exercise defines various token names, including parentheses, brackets, brace
 
 To run the Lexical Scanner for the "L" programming language, please ensure that JFlex is set up properly on your Linux system (or WSL). You can follow the setup instructions provided in the next section before proceeding with the steps below.
 
-### Instructions
+## Instructions
 
 1. Clone the repository to your local machine.
 2. Navigate to the "ex1" directory within the repository.
 3. Open a terminal window in this directory.
 
-### Running the Program
+## Running the Program
 
 In the terminal, run the following command:
 
@@ -127,17 +127,17 @@ The context-free grammar for the "L" programming language is specified here:
 To ensure proper functionality, it's crucial to feed this grammar to CUP and resolve any potential shift-reduce conflicts. The operator precedence is outlined in Table 2:
 <img src="images/LCFG_precedence.png" alt="precedence" width="400"/>
 
-### Input and Output
+## Input and Output
 
 - **Input:** The input for this exercise is a single text file containing an "L" program.
 - **Output:** A single text file that contains either "OK" when the input program has correct syntax, "ERROR(location)" when there is a syntax error (with location indicating the line number of the first encountered error), or "ERROR" when there is a lexical error.
 
 
-### Instructions
+## Instructions
 
 1. Navigate to the "ex2" directory within the repository.
 2. Open a terminal window in this directory.
-3. run ```make``` as usual which 
+3. run ```make``` as usual which:
    1. Generates the relevant files using jflex/cup
    2. Compiles the modules into PARSER
    3. Runs PARSER on input/Input.txt
@@ -152,11 +152,48 @@ java -jar PARSER <input_file_path> <output_file_path>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!---- Exercise 3 --->
-# Exercise 3 - 
+# Exercise 3 - Semantic Analyzer
 The full specification can be found [Here](./ex3/ex3.pdf)
 
+The third exercise involves implementing a semantic analyzer for the "L" programming language. The semantic analyzer recursively scans the Abstract Syntax Tree (AST) produced by the CUP parser from Exercise 2.
 
-### Built With
+Its main goal is to check for any semantic errors within the program. The input for the semantic analyzer is a single text file containing an "L" program, and the output is a single text file indicating whether the input program is semantically valid. Furthermore, the semantic analyzer enriches the AST with metadata that will be utilized in later phases, such as code generation and optimization.
+
+## L Semantics
+
+The semantics of the "L" programming language are _quite complex_, and are outlined in the **full specification** in [the pdf](./ex3/ex3.pdf) - covering **types, classes, inheritance, arrays, assignments, if and while statements, return statements, equality testing, binary operations, and scope rules**..
+
+for example:
+
+<img src="images/classexampleex3.png" alt="precedence" width="400"/>
+
+## Input and Output
+
+- **Input:** The input for this exercise is a single text file containing an "L" program.
+- **Output:** A single text file that contains the word "OK" when the input program is correct semantically. In case of any semantic error, the output will contain "ERROR(location)", where "location" indicates the line number of the first encountered error.
+
+## Instructions
+
+1. Navigate to the "ex3" directory within the repository.
+2. Open a terminal window in this directory.
+3. run ```make``` as usual which 
+   1. Generates the relevant files using jflex/cup
+   2. Compiles the modules into COMPILER
+   3. Generates an image of the resulting syntax tree
+   4. Generates images which describe the changes in the symbol table
+
+The makefile for this exercise is located at the following path: `ex3/Makefile`. This makefile will build the semantic analyzer into the `ex3/COMPILER` directory. You can run the COMPILER via the command line using the following parameters:
+
+```bash
+java -jar COMPILER <input_file_path> <output_file_path>
+```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+
+## Built With
 <!-- Fill the relevant technologies shields here TODO -->
 * [![Python][Python-shield]][Python-url]
 
