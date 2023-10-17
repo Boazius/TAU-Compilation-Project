@@ -43,7 +43,6 @@ This repository contains a complete compiler for the "L" programming language, w
 
 <!-- GETTING STARTED -->
 # Getting Started
-<!-- TODO -->
 To begin working on the compiler for the "L" language, follow the steps below for setting up your development environment.
 
 ### 1. Install WSL (Windows Subsystem for Linux)
@@ -52,7 +51,7 @@ If you are using Windows, it is recommended to set up the Windows Subsystem for 
 
 ### 2. Install the necessary programs
 
-Ensure that you have the Java Development Kit (JDK), make, jflex installed on your WSL system.
+Ensure that you have the Java Development Kit (JDK), make, jflex installed on your linux system.
 you can use the following commands:
 ```
 apt update
@@ -262,16 +261,6 @@ java -jar COMPILER <input_file_path> <output_file_path>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- LICENSE -->
-## License
-This repo is Distributed under the Apache License 2.0. See `LICENSE.txt` for more information.
-
-The specifications and Compilation course content (The L language, ex1.pdf, ex2.pdf, ex3.pdf, ex4.pdf and every file) are the property of Tel Aviv University Compilation course staff of 2022, i do not own them in any way, and are only here for documentation's sake.
-
-this repository was forked from https://github.com/davidtr1037/compilation-tau/
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- CONTACT -->
 ## Contact
 
@@ -290,6 +279,20 @@ this repository was forked from https://github.com/davidtr1037/compilation-tau/
 * Whoever made JAVA CUP at http://www2.cs.tum.edu/projects/cup/
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- LICENSE -->
+## License
+This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+refer to it here: [LICENSE.txt](/LICENSE.txt)
+Basically, you can use/modify this repo as you see fit FOR EDUCATIONAL PURPOSES ONLY, and must give credit to the course instructors who made it.
+
+The specifications and Compilation course content (The L language, ex1.pdf, ex2.pdf, ex3.pdf, ex4.pdf and every file) are the property of Tel Aviv University Compilation course staff of 2022, i do not own them in any way, and are only here for documentation's sake.
+
+This repository was forked from https://github.com/davidtr1037/compilation-tau/
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- You can get more shields at img.shields.io , usage: [![Python][Python-shield]][Python-url] -->
